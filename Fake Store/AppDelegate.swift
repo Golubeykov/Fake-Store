@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         startApplicationProcess()
         return true
     }
+    
+    //MARK: - Methods
     func startApplicationProcess() {
         runLaunchScreen()
         runMainFlow()
@@ -32,9 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func runMainFlow() {
         DispatchQueue.main.async {
-            let mainVC = ViewController()
-            let navigationController = UINavigationController(rootViewController: mainVC)
-            self.window?.rootViewController = navigationController
+            self.window?.rootViewController = TabBarConfigurator().configure()
         }
     }
 }
