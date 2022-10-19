@@ -15,7 +15,6 @@
 		3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4E60502900313C0059B27C /* AuthViewController.xib */; };
 		3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E60542900370C0059B27C /* TextFieldPadding.swift */; };
 		3A62B68328E18FFB00A9E8EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62B68228E18FFB00A9E8EB /* AppDelegate.swift */; };
-		3A62B68728E18FFB00A9E8EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62B68628E18FFB00A9E8EB /* ViewController.swift */; };
 		3A62B68C28E18FFF00A9E8EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A62B68B28E18FFF00A9E8EB /* Assets.xcassets */; };
 		3A62B68F28E18FFF00A9E8EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A62B68D28E18FFF00A9E8EB /* LaunchScreen.storyboard */; };
 		3A77362F28E2E4DB0044DAEA /* ColorsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A77362E28E2E4DB0044DAEA /* ColorsStorage.swift */; };
@@ -38,7 +37,6 @@
 		3A4E60542900370C0059B27C /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
 		3A62B67F28E18FFB00A9E8EB /* Fake Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fake Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A62B68228E18FFB00A9E8EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A62B68628E18FFB00A9E8EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A62B68B28E18FFF00A9E8EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A62B68E28E18FFF00A9E8EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A62B69028E18FFF00A9E8EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 				3A62B69728E1957E00A9E8EB /* MainFlow */,
 				3A4E6053290036E70059B27C /* Extensions */,
 				3A77362B28E2E41C0044DAEA /* Storages */,
-				3A62B68628E18FFB00A9E8EB /* ViewController.swift */,
 			);
 			path = "Fake Store";
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */,
 				3A774B5E28F86A1E003D5466 /* ErrorTypes.swift in Sources */,
 				3A27BA3F28F8540D00C9AB52 /* NetworkTask.swift in Sources */,
-				3A62B68728E18FFB00A9E8EB /* ViewController.swift in Sources */,
 				3A77363328E2E80C0044DAEA /* TabBarConfigurator.swift in Sources */,
 				3A27BA3B28F853F900C9AB52 /* EmptyModel.swift in Sources */,
 				3A774B6228F8712A003D5466 /* AuthResponseModel.swift in Sources */,

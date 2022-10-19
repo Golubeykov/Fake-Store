@@ -69,6 +69,7 @@ private extension AuthViewController {
         configurePasswordUnderline()
         configureLoginButton()
         hideKeyboardWhenTapped()
+        enablePasswordToggle()
     }
 
     func configureViewBackground() {
@@ -96,6 +97,7 @@ private extension AuthViewController {
         passwordTextField.backgroundColor = ColorsStorage.backgroundGray
         passwordTextField.setLeftPaddingPoints(textFieldPadding)
         passwordTextField.textContentType = .password
+        passwordTextField.isSecureTextEntry = true
     }
 
     func configurePasswordUnderline() {
