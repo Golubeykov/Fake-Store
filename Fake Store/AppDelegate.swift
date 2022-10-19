@@ -35,8 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = lauchScreenViewController
     }
     func runMainFlow() {
-        DispatchQueue.main.async {
-            self.window?.rootViewController = TabBarConfigurator().configure()
+        self.window?.rootViewController = TabBarConfigurator().configure()
+
+        let creds = AuthRequestModel(username: "mor_2314", password: "83r5^_")
+        let auth = AuthService()
+        auth.performLoginRequestAndSaveToken(credentials: creds) { result in
+            switch result {
+            case .success:
+                print("succes")
+            case .failure:
+                print("failure")
+            }
         }
     }
 }

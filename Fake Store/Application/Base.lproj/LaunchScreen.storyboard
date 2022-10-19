@@ -25,7 +25,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.0" green="0.86274509803921573" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.55798178909999996" green="0.89621597529999997" blue="0.97256368400000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="e4X-dI-8Q8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="878-ch-XBd"/>
                             <constraint firstItem="e4X-dI-8Q8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GEf-oA-sKB"/>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splashLogo" width="192" height="220"/>
+        <image name="splashLogo" width="173" height="198"/>
     </resources>
 </document>

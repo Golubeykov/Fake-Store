@@ -43,7 +43,7 @@ private extension TabBarConfigurator {
     func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .catalog:
-            return ViewController()
+            return AuthViewController()
         case .favorites:
             return ViewController()
         case .cart:

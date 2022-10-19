@@ -8,14 +8,15 @@
 import UIKit
 
 class ColorsStorage {
-    static let backgroundGreen: UIColor = UIColor(rgb: 0x00DCA7)
+    static let backgroundBlue: UIColor = UIColor(rgb: 0x6EE8FB)
     static let clear = UIColor.clear
     static let white = UIColor(rgb: 0xFFFFFF)
     static let black = UIColor(rgb: 0x000000)
     static let red = UIColor(rgb: 0xF35858)
     static let lightGray = UIColor(rgb: 0xB0B0B0)
-    static let lightBackgroundGray = UIColor(rgb: 0xFBFBFB)
+    static let backgroundGray = UIColor(rgb: 0xD9D9D9)
     static let lightTextGray = UIColor(rgb: 0xDFDFDF)
+    static let orange = UIColor(rgb: 0xFDB87D) 
 }
 
 extension UIColor {

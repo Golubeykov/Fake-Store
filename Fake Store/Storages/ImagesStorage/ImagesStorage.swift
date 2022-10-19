@@ -14,4 +14,6 @@ struct ImagesStorage {
     static let favoritesTabBarImage = UIImage(named: "favoritesTabBarImage")
     static let cartTabBarImage = UIImage(named: "cartTabBarImage")
     static let profileTabBarImage = UIImage(named: "profileTabBarImage")
+    static let hiddenPasswordIcon = UIImage(named: "hiddenPasswordIcon")
+    static let shownPasswordIcon = UIImage(named: "shownPasswordIcon")
 }
