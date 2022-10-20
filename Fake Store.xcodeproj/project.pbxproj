@@ -11,6 +11,9 @@
 		3A27BA3B28F853F900C9AB52 /* EmptyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27BA3A28F853F900C9AB52 /* EmptyModel.swift */; };
 		3A27BA3D28F8540400C9AB52 /* NetworkMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27BA3C28F8540400C9AB52 /* NetworkMethod.swift */; };
 		3A27BA3F28F8540D00C9AB52 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A27BA3E28F8540D00C9AB52 /* NetworkTask.swift */; };
+		3A47E5682901ABF900026974 /* BaseTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5672901ABF900026974 /* BaseTokenStorage.swift */; };
+		3A47E56A2901AC0200026974 /* TokenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5692901AC0200026974 /* TokenContainer.swift */; };
+		3A47E56C2901AC0A00026974 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E56B2901AC0A00026974 /* TokenStorage.swift */; };
 		3A4E60512900313C0059B27C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E604F2900313C0059B27C /* AuthViewController.swift */; };
 		3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4E60502900313C0059B27C /* AuthViewController.xib */; };
 		3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E60542900370C0059B27C /* TextFieldPadding.swift */; };
@@ -32,6 +35,9 @@
 		3A27BA3A28F853F900C9AB52 /* EmptyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyModel.swift; sourceTree = "<group>"; };
 		3A27BA3C28F8540400C9AB52 /* NetworkMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethod.swift; sourceTree = "<group>"; };
 		3A27BA3E28F8540D00C9AB52 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTask.swift; sourceTree = "<group>"; };
+		3A47E5672901ABF900026974 /* BaseTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTokenStorage.swift; sourceTree = "<group>"; };
+		3A47E5692901AC0200026974 /* TokenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenContainer.swift; sourceTree = "<group>"; };
+		3A47E56B2901AC0A00026974 /* TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
 		3A4E604F2900313C0059B27C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3A4E60502900313C0059B27C /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		3A4E60542900370C0059B27C /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
@@ -121,6 +127,16 @@
 			children = (
 			);
 			path = PicturesService;
+			sourceTree = "<group>";
+		};
+		3A47E5662901ABD600026974 /* TokenStorage */ = {
+			isa = PBXGroup;
+			children = (
+				3A47E5672901ABF900026974 /* BaseTokenStorage.swift */,
+				3A47E5692901AC0200026974 /* TokenContainer.swift */,
+				3A47E56B2901AC0A00026974 /* TokenStorage.swift */,
+			);
+			path = TokenStorage;
 			sourceTree = "<group>";
 		};
 		3A4E604E29002FEE0059B27C /* AuthFlow */ = {
@@ -216,6 +232,7 @@
 		3A77362B28E2E41C0044DAEA /* Storages */ = {
 			isa = PBXGroup;
 			children = (
+				3A47E5662901ABD600026974 /* TokenStorage */,
 				3A774B5C28F86A11003D5466 /* ErrorTypes */,
 				3A77362D28E2E4340044DAEA /* ColorsStorage */,
 				3A77362C28E2E4290044DAEA /* ImagesStorage */,
@@ -320,9 +337,12 @@
 			files = (
 				3A27BA3928F853EB00C9AB52 /* BaseNetworkTask.swift in Sources */,
 				3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */,
+				3A47E5682901ABF900026974 /* BaseTokenStorage.swift in Sources */,
+				3A47E56A2901AC0200026974 /* TokenContainer.swift in Sources */,
 				3A774B5E28F86A1E003D5466 /* ErrorTypes.swift in Sources */,
 				3A27BA3F28F8540D00C9AB52 /* NetworkTask.swift in Sources */,
 				3A77363328E2E80C0044DAEA /* TabBarConfigurator.swift in Sources */,
+				3A47E56C2901AC0A00026974 /* TokenStorage.swift in Sources */,
 				3A27BA3B28F853F900C9AB52 /* EmptyModel.swift in Sources */,
 				3A774B6228F8712A003D5466 /* AuthResponseModel.swift in Sources */,
 				3A4E60512900313C0059B27C /* AuthViewController.swift in Sources */,

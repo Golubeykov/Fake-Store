@@ -199,8 +199,8 @@ extension AuthViewController: UITextFieldDelegate {
     }
 
     func dismissEmptyFieldsNotidication() {
-        loginUnderline.backgroundColor = ColorsStorage.lightGray
-        passwordUnderline.backgroundColor = ColorsStorage.lightGray
+        loginUnderline.backgroundColor = ColorsStorage.black
+        passwordUnderline.backgroundColor = ColorsStorage.black
         if let emptyLoginNotificationLabel = self.view.viewWithTag(100) {
             emptyLoginNotificationLabel.removeFromSuperview()
         }

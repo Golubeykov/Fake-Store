@@ -25,28 +25,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - Methods
-    func startApplicationProcess() {
-        runLaunchScreen()
-        runMainFlow()
-    }
-    func runLaunchScreen() {
-        let lauchScreenViewController = lauchScreenStoryBoard
-            .instantiateInitialViewController()
-        window?.rootViewController = lauchScreenViewController
-    }
-    func runMainFlow() {
-        self.window?.rootViewController = TabBarConfigurator().configure()
 
-        let creds = AuthRequestModel(username: "mor_2314", password: "83r5^_")
-        let auth = AuthService()
-        auth.performLoginRequestAndSaveToken(credentials: creds) { result in
-            switch result {
-            case .success:
-                print("succes")
-            case .failure:
-                print("failure")
-            }
-        }
-    }
+     func startApplicationProcess() {
+         runLaunchScreen()
+
+         //if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
+         if false {
+             runMainFlow()
+         } else {
+             runAuthFlow()
+         }
+     }
+     func runMainFlow() {
+         DispatchQueue.main.async {
+             self.window?.rootViewController = TabBarConfigurator().configure()
+         }
+     }
+     func runAuthFlow() {
+         DispatchQueue.main.async {
+             let authVC = AuthViewController()
+             self.window?.rootViewController = authVC
+         }
+     }
+
+     func runLaunchScreen() {
+         let lauchScreenViewController = lauchScreenStoryBoard
+             .instantiateInitialViewController()
+         window?.rootViewController = lauchScreenViewController
+     }
 }
 
