@@ -45,11 +45,11 @@ private extension TabBarConfigurator {
         case .catalog:
             return AuthViewController()
         case .favorites:
-            return ViewController()
+            return UIViewController()
         case .cart:
-            return ViewController()
+            return UIViewController()
         case .profile:
-            return ViewController()
+            return UIViewController()
         }
     }
 }

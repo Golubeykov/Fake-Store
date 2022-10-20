@@ -17,6 +17,8 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var loginUnderline: UIView!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordUnderline: UIView!
+    @IBOutlet private weak var passwordConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButtonLabel: UIButton!
 
     // MARK: - Views
@@ -48,9 +50,25 @@ final class AuthViewController: UIViewController {
         subcribeToNotificationCenter()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromNotificationCenter()
+    }
+
     // MARK: - Action
 
     @IBAction func loginButtonAction(_ sender: Any) {
+        if loginTextField.text == "" {
+            showEmptyLoginNotification()
+        }
+        if passwordTextField.text == "" {
+            showEmptyPasswordNotification()
+        }
+    }
+
+    @IBAction func demoLogin(_ sender: Any) {
+        loginTextField.text = "mor_2314"
+        passwordTextField.text = "83r5^_"
     }
 
 
@@ -86,6 +104,7 @@ private extension AuthViewController {
         loginTextField.placeholder = loginTextFieldPlaceholder
         loginTextField.backgroundColor = ColorsStorage.backgroundGray
         loginTextField.setLeftPaddingPoints(textFieldPadding)
+        loginTextField.delegate = self
     }
 
     func configureLoginUnderline() {
@@ -98,6 +117,7 @@ private extension AuthViewController {
         passwordTextField.setLeftPaddingPoints(textFieldPadding)
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.delegate = self
     }
 
     func configurePasswordUnderline() {
@@ -134,6 +154,65 @@ private extension AuthViewController {
     @objc func togglePasswordView(_ sender: Any) {
         passwordTextField.isSecureTextEntry.toggle()
         showHidePasswordButton.isSelected.toggle()
+    }
+}
+
+//MARK: - Handle empty text fields
+
+extension AuthViewController: UITextFieldDelegate {
+    func showEmptyLoginNotification() {
+        loginUnderline.backgroundColor = ColorsStorage.red
+
+        let loginEmptyNotification = UILabel(frame: CGRect(x: 0, y: 0, width: loginTextField.frame.width, height: 16))
+        loginEmptyNotification.textAlignment = .left
+        loginEmptyNotification.text = "Поле не может быть пустым"
+        loginEmptyNotification.font = .systemFont(ofSize: 12)
+        loginEmptyNotification.textColor = ColorsStorage.red
+        loginEmptyNotification.tag = 100
+        self.view.addSubview(loginEmptyNotification)
+        loginEmptyNotification.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            loginEmptyNotification.rightAnchor.constraint(equalTo: loginTextField.rightAnchor)
+        ])
+        NSLayoutConstraint(item: loginEmptyNotification, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1.0, constant: 32.0).isActive = true
+        NSLayoutConstraint(item: loginEmptyNotification, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: loginTextField, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 8.0).isActive = true
+        passwordConstraint.constant = 46
+        self.view.layoutIfNeeded()
+    }
+    func showEmptyPasswordNotification() {
+        passwordUnderline.backgroundColor = ColorsStorage.red
+        let passwordEmptyNotification = UILabel(frame: CGRect(x: 0, y: 0, width: loginTextField.frame.width, height: 16))
+        passwordEmptyNotification.textAlignment = .left
+        passwordEmptyNotification.text = "Поле не может быть пустым"
+        passwordEmptyNotification.font = .systemFont(ofSize: 12)
+        passwordEmptyNotification.textColor = ColorsStorage.red
+        passwordEmptyNotification.tag = 150
+        self.view.addSubview(passwordEmptyNotification)
+        passwordEmptyNotification.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            passwordEmptyNotification.rightAnchor.constraint(equalTo: loginTextField.rightAnchor)
+        ])
+        NSLayoutConstraint(item: passwordEmptyNotification, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1.0, constant: 32.0).isActive = true
+        NSLayoutConstraint(item: passwordEmptyNotification, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: passwordTextField, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 8.0).isActive = true
+        buttonConstraint.constant = 46
+        self.view.layoutIfNeeded()
+    }
+
+    func dismissEmptyFieldsNotidication() {
+        loginUnderline.backgroundColor = ColorsStorage.lightGray
+        passwordUnderline.backgroundColor = ColorsStorage.lightGray
+        if let emptyLoginNotificationLabel = self.view.viewWithTag(100) {
+            emptyLoginNotificationLabel.removeFromSuperview()
+        }
+        if let emptyPasswordNotificationLabel = self.view.viewWithTag(150) {
+            emptyPasswordNotificationLabel.removeFromSuperview()
+        }
+        passwordConstraint.constant = 26
+        buttonConstraint.constant = 26
+        self.view.layoutIfNeeded()
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        dismissEmptyFieldsNotidication()
     }
 }
 

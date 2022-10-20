@@ -11,10 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthViewController" customModule="Fake_Store" customModuleProvider="target">
             <connections>
+                <outlet property="buttonConstraint" destination="3x6-3v-jy3" id="gKr-eJ-W07"/>
                 <outlet property="loginButtonLabel" destination="dNd-ow-oYi" id="ufP-2g-Ti3"/>
                 <outlet property="loginLabel" destination="fIo-U5-aHv" id="7PT-zS-fd1"/>
                 <outlet property="loginTextField" destination="tGj-Fn-aHV" id="U1x-Sq-qzg"/>
                 <outlet property="loginUnderline" destination="nEt-uW-Dxo" id="d1e-HW-e5m"/>
+                <outlet property="passwordConstraint" destination="xOG-n3-Js5" id="h5T-eL-ENS"/>
                 <outlet property="passwordTextField" destination="Qyp-bS-9VQ" id="tO5-yR-w86"/>
                 <outlet property="passwordUnderline" destination="Rzj-pQ-C7e" id="bIf-Dl-qWm"/>
                 <outlet property="scrollView" destination="x2n-KO-GOg" id="nsb-XD-c9V"/>
@@ -30,7 +32,7 @@
                     <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vG7-dS-fuY" userLabel="ContainerView">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="514"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="594"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вход" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIo-U5-aHv" userLabel="LoginLabel">
                                     <rect key="frame" x="175.66666666666666" y="228" width="39" height="21"/>
@@ -98,6 +100,16 @@
                                         <constraint firstAttribute="width" constant="158" id="ce7-bL-sYf"/>
                                     </constraints>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-Er-kub" userLabel="demoButton">
+                                    <rect key="frame" x="138.66666666666666" y="529" width="113" height="35"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Демо-вход">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="demoLogin:" destination="-1" eventType="touchUpInside" id="D7T-uI-hok"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -117,8 +129,10 @@
                                 <constraint firstItem="dNd-ow-oYi" firstAttribute="leading" secondItem="vG7-dS-fuY" secondAttribute="leading" constant="16" id="ZNE-PU-wvR"/>
                                 <constraint firstItem="Qyp-bS-9VQ" firstAttribute="leading" secondItem="vG7-dS-fuY" secondAttribute="leading" constant="16" id="dCg-6i-oUG"/>
                                 <constraint firstItem="JxO-bm-1tO" firstAttribute="centerX" secondItem="vG7-dS-fuY" secondAttribute="centerX" id="iGH-Zz-CQa"/>
-                                <constraint firstAttribute="bottom" secondItem="dNd-ow-oYi" secondAttribute="bottom" constant="30" id="sAq-Hv-37P"/>
+                                <constraint firstAttribute="bottom" secondItem="xRQ-Er-kub" secondAttribute="bottom" constant="30" id="n4c-cs-z4u"/>
+                                <constraint firstItem="xRQ-Er-kub" firstAttribute="top" secondItem="dNd-ow-oYi" secondAttribute="bottom" constant="45" id="sAq-Hv-37P"/>
                                 <constraint firstItem="Rzj-pQ-C7e" firstAttribute="centerX" secondItem="vG7-dS-fuY" secondAttribute="centerX" id="wnO-Rs-XyR"/>
+                                <constraint firstItem="xRQ-Er-kub" firstAttribute="centerX" secondItem="vG7-dS-fuY" secondAttribute="centerX" id="xDN-kK-BQd"/>
                                 <constraint firstItem="Qyp-bS-9VQ" firstAttribute="top" secondItem="nEt-uW-Dxo" secondAttribute="bottom" constant="26" id="xOG-n3-Js5"/>
                                 <constraint firstItem="fIo-U5-aHv" firstAttribute="top" secondItem="JxO-bm-1tO" secondAttribute="bottom" constant="30" id="zXM-yt-aUO"/>
                             </constraints>
