@@ -14,6 +14,10 @@
 		3A47E5682901ABF900026974 /* BaseTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5672901ABF900026974 /* BaseTokenStorage.swift */; };
 		3A47E56A2901AC0200026974 /* TokenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5692901AC0200026974 /* TokenContainer.swift */; };
 		3A47E56C2901AC0A00026974 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E56B2901AC0A00026974 /* TokenStorage.swift */; };
+		3A47E56F2901ACCD00026974 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E56E2901ACCD00026974 /* AlertView.swift */; };
+		3A47E5722901ACF600026974 /* ButtonActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5712901ACF600026974 /* ButtonActivityIndicator.swift */; };
+		3A47E5752901AD2500026974 /* SnackbarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5742901AD2500026974 /* SnackbarModel.swift */; };
+		3A47E5772901AD2F00026974 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5762901AD2F00026974 /* SnackbarView.swift */; };
 		3A4E60512900313C0059B27C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E604F2900313C0059B27C /* AuthViewController.swift */; };
 		3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4E60502900313C0059B27C /* AuthViewController.xib */; };
 		3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E60542900370C0059B27C /* TextFieldPadding.swift */; };
@@ -38,6 +42,10 @@
 		3A47E5672901ABF900026974 /* BaseTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTokenStorage.swift; sourceTree = "<group>"; };
 		3A47E5692901AC0200026974 /* TokenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenContainer.swift; sourceTree = "<group>"; };
 		3A47E56B2901AC0A00026974 /* TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
+		3A47E56E2901ACCD00026974 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		3A47E5712901ACF600026974 /* ButtonActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActivityIndicator.swift; sourceTree = "<group>"; };
+		3A47E5742901AD2500026974 /* SnackbarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarModel.swift; sourceTree = "<group>"; };
+		3A47E5762901AD2F00026974 /* SnackbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
 		3A4E604F2900313C0059B27C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3A4E60502900313C0059B27C /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		3A4E60542900370C0059B27C /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
@@ -139,6 +147,31 @@
 			path = TokenStorage;
 			sourceTree = "<group>";
 		};
+		3A47E56D2901ACB800026974 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3A47E56E2901ACCD00026974 /* AlertView.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		3A47E5702901ACDD00026974 /* ButtonActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				3A47E5712901ACF600026974 /* ButtonActivityIndicator.swift */,
+			);
+			path = ButtonActivityIndicator;
+			sourceTree = "<group>";
+		};
+		3A47E5732901AD1800026974 /* SnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				3A47E5742901AD2500026974 /* SnackbarModel.swift */,
+				3A47E5762901AD2F00026974 /* SnackbarView.swift */,
+			);
+			path = SnackBar;
+			sourceTree = "<group>";
+		};
 		3A4E604E29002FEE0059B27C /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +241,9 @@
 		3A62B69828E1958D00A9E8EB /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
+				3A47E5732901AD1800026974 /* SnackBar */,
+				3A47E5702901ACDD00026974 /* ButtonActivityIndicator */,
+				3A47E56D2901ACB800026974 /* AlertView */,
 				3A77362928E2E3CC0044DAEA /* TabBar */,
 			);
 			path = SupportingViews;
@@ -336,7 +372,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A27BA3928F853EB00C9AB52 /* BaseNetworkTask.swift in Sources */,
+				3A47E56F2901ACCD00026974 /* AlertView.swift in Sources */,
 				3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */,
+				3A47E5772901AD2F00026974 /* SnackbarView.swift in Sources */,
 				3A47E5682901ABF900026974 /* BaseTokenStorage.swift in Sources */,
 				3A47E56A2901AC0200026974 /* TokenContainer.swift in Sources */,
 				3A774B5E28F86A1E003D5466 /* ErrorTypes.swift in Sources */,
@@ -349,9 +387,11 @@
 				3A77363128E2E7AA0044DAEA /* ImagesStorage.swift in Sources */,
 				3A77363528E2E83A0044DAEA /* TabBarModel.swift in Sources */,
 				3A62B68328E18FFB00A9E8EB /* AppDelegate.swift in Sources */,
+				3A47E5752901AD2500026974 /* SnackbarModel.swift in Sources */,
 				3A774B6028F8711E003D5466 /* AuthRequestModel.swift in Sources */,
 				3A27BA3D28F8540400C9AB52 /* NetworkMethod.swift in Sources */,
 				3A77362F28E2E4DB0044DAEA /* ColorsStorage.swift in Sources */,
+				3A47E5722901ACF600026974 /* ButtonActivityIndicator.swift in Sources */,
 				3A774B6428F87133003D5466 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
