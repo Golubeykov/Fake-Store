@@ -44,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      func runAuthFlow() {
          DispatchQueue.main.async {
              let authVC = AuthViewController()
-             self.window?.rootViewController = authVC
+             let navigationController = BaseUINavigationController(rootViewController: authVC)
+             self.window?.rootViewController = navigationController
          }
      }
 

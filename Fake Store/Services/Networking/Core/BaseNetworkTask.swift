@@ -31,24 +31,40 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
 
     // MARK: - NetworkTask
 
-    func performRequest(input: AbstractInput, _ onResponseWasReceived: @escaping (Result<AbstractOutput, Error>) -> Void) {
+    func performRequest(
+        input: AbstractInput,
+        _ onResponseWasReceived: @escaping (_ result: Result<AbstractOutput, Error>) -> Void
+    ) {
         do {
             let request = try getRequest(with: input)
+
             session.dataTask(with: request) { data, response, error in
                 if let error = error {
                     if error.localizedDescription == LocalizedDescriptions.noNetworkSimulator || error.localizedDescription == LocalizedDescriptions.noNetworkDevice {
                         onResponseWasReceived(.failure(PossibleErrors.noNetworkConnection))
                     } else {
-                        onResponseWasReceived(.failure(PossibleErrors.unknownError))
+                    onResponseWasReceived(.failure(PossibleErrors.unknownError))
                     }
 
                 } else if let data = data {
-                    do {
-                        let mappedModel = try JSONDecoder().decode(AbstractOutput.self, from: data)
-                        onResponseWasReceived(.success(mappedModel))
-                    } catch {
-                        onResponseWasReceived(.failure(PossibleErrors.unknownError))
+                    if let httpResponse = response as? HTTPURLResponse {
+                        switch httpResponse.statusCode {
+                        case 200:
+                            do {
+                                let mappedModel = try JSONDecoder().decode(AbstractOutput.self, from: data)
+                                onResponseWasReceived(.success(mappedModel))
+                            } catch {
+                                onResponseWasReceived(.failure(PossibleErrors.unknownError))
+                            }
+                        case 401:
+                            onResponseWasReceived(.failure(PossibleErrors.nonAuthorizedAccess))
+                        default:
+                            onResponseWasReceived(.failure(PossibleErrors.unknownServerError))
+                        }
                     }
+
+                } else {
+                    onResponseWasReceived(.failure(PossibleErrors.unknownError))
                 }
             }
             .resume()

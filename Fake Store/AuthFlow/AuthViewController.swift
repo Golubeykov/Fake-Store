@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AuthViewController: UIViewController {
+final class AuthViewController: BaseUIViewController {
 
     // MARK: - IBOutlets
 
@@ -47,6 +47,7 @@ final class AuthViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureNavigationBarStyle()
         subcribeToNotificationCenter()
     }
 
@@ -63,6 +64,44 @@ final class AuthViewController: UIViewController {
         }
         if passwordTextField.text == "" {
             showEmptyPasswordNotification()
+        }
+        if (!(loginTextField.text == "") || !(passwordTextField.text == "")), let username = loginTextField.text, let password = passwordTextField.text {
+            let buttonActivityIndicator = ButtonActivityIndicator(button: loginButtonLabel, originalButtonText: "Войти")
+            buttonActivityIndicator.showButtonLoading()
+
+            let credentials = AuthRequestModel(username: username, password: password)
+            AuthService()
+                .performLoginRequestAndSaveToken(credentials: credentials) { [weak self] result in
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                                let mainViewController = TabBarConfigurator().configure()
+                                delegate.window?.rootViewController = mainViewController
+                            }
+                        }
+                    case .failure (let error):
+                        DispatchQueue.main.async {
+                            var snackbarText = "Что-то пошло не так"
+
+                            if let currentError = error as? PossibleErrors {
+                                switch currentError {
+                                case .nonAuthorizedAccess:
+                                    snackbarText = "Логин или пароль введен неправильно"
+                                case .noNetworkConnection:
+                                    snackbarText = "Отсутствует интернет соединение"
+                                default:
+                                    snackbarText = "Что-то пошло не так"
+                                }
+                            }
+                            guard let `self` = self else { return }
+                            let model = SnackbarModel(text: snackbarText)
+                            let snackbar = SnackbarView(model: model, viewController: self)
+                            snackbar.showSnackBar()
+                            buttonActivityIndicator.hideButtonLoading()
+                        }
+                    }
+                }
         }
     }
 
@@ -126,8 +165,14 @@ private extension AuthViewController {
 
     func configureLoginButton() {
         loginButtonLabel.backgroundColor = ColorsStorage.orange
-        loginButtonLabel.setAttributedTitle(loginButtonLabelText, for: .normal)
+        loginButtonLabel.setTitle("Войти", for: .normal)
+//        loginButtonLabel.setAttributedTitle(loginButtonLabelText, for: .normal)
+//        loginButtonLabel.setAttributedTitle(NSAttributedString(string: ""), for: .selected)
         loginButtonLabel.tintColor = ColorsStorage.black
+    }
+
+    func configureNavigationBarStyle() {
+        configureNavigationBar(title: "", backgroundColor: ColorsStorage.clear, titleColor: ColorsStorage.clear, isStatusBarDark: false)
     }
 
 }

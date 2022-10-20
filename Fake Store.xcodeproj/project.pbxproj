@@ -18,6 +18,8 @@
 		3A47E5722901ACF600026974 /* ButtonActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5712901ACF600026974 /* ButtonActivityIndicator.swift */; };
 		3A47E5752901AD2500026974 /* SnackbarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5742901AD2500026974 /* SnackbarModel.swift */; };
 		3A47E5772901AD2F00026974 /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5762901AD2F00026974 /* SnackbarView.swift */; };
+		3A47E57A2901B10B00026974 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E5792901B10B00026974 /* BaseUIViewController.swift */; };
+		3A47E57C2901B14700026974 /* BaseUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47E57B2901B14700026974 /* BaseUINavigationController.swift */; };
 		3A4E60512900313C0059B27C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E604F2900313C0059B27C /* AuthViewController.swift */; };
 		3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A4E60502900313C0059B27C /* AuthViewController.xib */; };
 		3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E60542900370C0059B27C /* TextFieldPadding.swift */; };
@@ -46,6 +48,8 @@
 		3A47E5712901ACF600026974 /* ButtonActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActivityIndicator.swift; sourceTree = "<group>"; };
 		3A47E5742901AD2500026974 /* SnackbarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarModel.swift; sourceTree = "<group>"; };
 		3A47E5762901AD2F00026974 /* SnackbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
+		3A47E5792901B10B00026974 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
+		3A47E57B2901B14700026974 /* BaseUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUINavigationController.swift; sourceTree = "<group>"; };
 		3A4E604F2900313C0059B27C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3A4E60502900313C0059B27C /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		3A4E60542900370C0059B27C /* TextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPadding.swift; sourceTree = "<group>"; };
@@ -172,6 +176,15 @@
 			path = SnackBar;
 			sourceTree = "<group>";
 		};
+		3A47E5782901B0F300026974 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				3A47E5792901B10B00026974 /* BaseUIViewController.swift */,
+				3A47E57B2901B14700026974 /* BaseUINavigationController.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		3A4E604E29002FEE0059B27C /* AuthFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				3A62B68228E18FFB00A9E8EB /* AppDelegate.swift */,
+				3A47E5782901B0F300026974 /* BaseClasses */,
 				3A27BA3128F8538B00C9AB52 /* Services */,
 				3A62B69628E1940500A9E8EB /* Application */,
 				3A62B69828E1958D00A9E8EB /* SupportingViews */,
@@ -371,11 +385,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A47E57C2901B14700026974 /* BaseUINavigationController.swift in Sources */,
 				3A27BA3928F853EB00C9AB52 /* BaseNetworkTask.swift in Sources */,
 				3A47E56F2901ACCD00026974 /* AlertView.swift in Sources */,
 				3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */,
 				3A47E5772901AD2F00026974 /* SnackbarView.swift in Sources */,
 				3A47E5682901ABF900026974 /* BaseTokenStorage.swift in Sources */,
+				3A47E57A2901B10B00026974 /* BaseUIViewController.swift in Sources */,
 				3A47E56A2901AC0200026974 /* TokenContainer.swift in Sources */,
 				3A774B5E28F86A1E003D5466 /* ErrorTypes.swift in Sources */,
 				3A27BA3F28F8540D00C9AB52 /* NetworkTask.swift in Sources */,
