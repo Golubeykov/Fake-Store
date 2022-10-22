@@ -38,6 +38,8 @@
 		3AAE3ED629040BE1004D8CBD /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */; };
 		3AAE3EDD29040F46004D8CBD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EDC29040F46004D8CBD /* CatalogService.swift */; };
 		3AAE3EDF2904150C004D8CBD /* CatalogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EDE2904150C004D8CBD /* CatalogModel.swift */; };
+		3AAE3EE2290486E5004D8CBD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EE1290486E5004D8CBD /* ImageLoader.swift */; };
+		3AAE3EE4290486F8004D8CBD /* UIImageView+ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EE3290486F8004D8CBD /* UIImageView+ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		3AAE3EDC29040F46004D8CBD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 		3AAE3EDE2904150C004D8CBD /* CatalogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogModel.swift; sourceTree = "<group>"; };
+		3AAE3EE1290486E5004D8CBD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		3AAE3EE3290486F8004D8CBD /* UIImageView+ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageLoader.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				3AAE3ED729040F07004D8CBD /* CatalogService */,
-				3A27BA3728F853C700C9AB52 /* PicturesService */,
 				3A27BA3628F853BF00C9AB52 /* LogoutService */,
 				3A27BA3528F853B900C9AB52 /* ImageLoader */,
 				3A27BA3428F853B400C9AB52 /* Core */,
@@ -132,6 +135,8 @@
 		3A27BA3528F853B900C9AB52 /* ImageLoader */ = {
 			isa = PBXGroup;
 			children = (
+				3AAE3EE1290486E5004D8CBD /* ImageLoader.swift */,
+				3AAE3EE3290486F8004D8CBD /* UIImageView+ImageLoader.swift */,
 			);
 			path = ImageLoader;
 			sourceTree = "<group>";
@@ -141,13 +146,6 @@
 			children = (
 			);
 			path = LogoutService;
-			sourceTree = "<group>";
-		};
-		3A27BA3728F853C700C9AB52 /* PicturesService */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PicturesService;
 			sourceTree = "<group>";
 		};
 		3A47E5662901ABD600026974 /* TokenStorage */ = {
@@ -256,6 +254,7 @@
 		3A62B69728E1957E00A9E8EB /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3AAE3EE02904867F004D8CBD /* ProductsModule */,
 				3A77362A28E2E3D50044DAEA /* CatalogModule */,
 			);
 			path = MainFlow;
@@ -334,6 +333,13 @@
 			path = CatalogService;
 			sourceTree = "<group>";
 		};
+		3AAE3EE02904867F004D8CBD /* ProductsModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductsModule;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -409,6 +415,7 @@
 				3AAE3ED529040BE1004D8CBD /* CatalogViewController.swift in Sources */,
 				3A47E57C2901B14700026974 /* BaseUINavigationController.swift in Sources */,
 				3A27BA3928F853EB00C9AB52 /* BaseNetworkTask.swift in Sources */,
+				3AAE3EE4290486F8004D8CBD /* UIImageView+ImageLoader.swift in Sources */,
 				3A47E56F2901ACCD00026974 /* AlertView.swift in Sources */,
 				3A4E60552900370C0059B27C /* TextFieldPadding.swift in Sources */,
 				3A47E5772901AD2F00026974 /* SnackbarView.swift in Sources */,
@@ -420,6 +427,7 @@
 				3A77363328E2E80C0044DAEA /* TabBarConfigurator.swift in Sources */,
 				3A47E56C2901AC0A00026974 /* TokenStorage.swift in Sources */,
 				3A27BA3B28F853F900C9AB52 /* EmptyModel.swift in Sources */,
+				3AAE3EE2290486E5004D8CBD /* ImageLoader.swift in Sources */,
 				3A774B6228F8712A003D5466 /* AuthResponseModel.swift in Sources */,
 				3A4E60512900313C0059B27C /* AuthViewController.swift in Sources */,
 				3AAE3EDF2904150C004D8CBD /* CatalogModel.swift in Sources */,
