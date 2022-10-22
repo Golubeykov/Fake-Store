@@ -14,6 +14,7 @@ final class CatalogViewController: UIViewController {
     @IBOutlet private weak var catalogTableView: UITableView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
 
     // MARK: - Views
 
@@ -32,12 +33,19 @@ final class CatalogViewController: UIViewController {
         super.viewDidLoad()
         catalogModel.loadCatalog()
         configureAppearance()
+        hideKeyboardWhenTapped()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
         setGradientBackground()
+        subcribeToNotificationCenter()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromNotificationCenter()
     }
 
 }
@@ -134,5 +142,46 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = catalogModel.catalog[indexPath.row].title
         return cell
     }
+
+}
+
+//MARK: - Handle keyboard's show-up methods
+
+extension CatalogViewController {
+    //Скрытие клавиатуры по тапу
+    func hideKeyboardWhenTapped() {
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view?.addGestureRecognizer(hideKeyboardGesture)
+    }
+
+    @objc func hideKeyboard() {
+        self.view?.endEditing(true)
+    }
+    func subcribeToNotificationCenter() {
+        //Подписываемся на два уведомления: одно приходит при появлении клавиатуры. #selector(self.keyboardWasShown) - функция, которая выполняется после получения события.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        // Второе — когда она пропадает
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    func unsubscribeFromNotificationCenter() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    //Функции, которые вызываются после появления / исчезновения клавиатуры (нужно чтобы клавиатура не залезала на поля ввода)
+    @objc func keyboardWasShown(notification: Notification) {
+        // Получаем размер клавиатуры
+        let info = notification.userInfo! as NSDictionary
+        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        // Добавляем отступ, равный размеру клавиатуры (80 это размер таббара, на данном этапе упрощено константой, целевая реализация - расчитывать высоту topTabBarController
+        bottomConstraint.constant = -kbSize.height + 80
+
+
+    }
+    //Когда клавиатура исчезает
+    @objc func keyboardWillBeHidden(notification: Notification) {
+        bottomConstraint.constant = 0
+    }
+
 
 }
