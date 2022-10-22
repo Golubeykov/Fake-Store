@@ -24,6 +24,7 @@ final class CatalogViewController: UIViewController {
     private let catalogModel = AllCatalogModel.shared
     private let cellReuseIndentifier = "CatalogCell"
     private let navigationBarTitle = "Каталог"
+    private let searchBarPlaceholder = "Поиск"
 
     // MARK: - Lifecycle
 
@@ -36,6 +37,7 @@ final class CatalogViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
+        setGradientBackground()
     }
 
 }
@@ -48,6 +50,8 @@ private extension CatalogViewController {
         configureTableView()
         configureModel()
         configurePullToRefresh()
+        configureSearchBar()
+        configureViewStyle()
     }
 
     func configureTableView() {
@@ -58,6 +62,24 @@ private extension CatalogViewController {
 
     func configureNavigationBar() {
         navigationItem.title = navigationBarTitle
+    }
+
+    func configureViewStyle() {
+        view.backgroundColor = ColorsStorage.backgroundBlue
+    }
+
+    func setGradientBackground() {
+        let colorTop = ColorsStorage.white.cgColor
+        let colorBottom = ColorsStorage.gradientBlue.cgColor
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.catalogTableView.bounds
+        let backgroundView = UIView(frame: catalogTableView.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        self.catalogTableView.backgroundView = backgroundView
+
     }
 
     func configureModel() {
@@ -78,6 +100,11 @@ private extension CatalogViewController {
                 self.catalogTableView.reloadData()
              }
         }
+    }
+
+    func configureSearchBar() {
+        searchBar.placeholder = searchBarPlaceholder
+        searchBar.barTintColor = ColorsStorage.backgroundBlue
     }
 
     func configurePullToRefresh() {
