@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-import Foundation
-
 struct AuthRequestModel: Encodable {
 
      let username: String

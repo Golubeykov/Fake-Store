@@ -65,7 +65,7 @@ final class AuthViewController: BaseUIViewController {
         if passwordTextField.text == "" {
             showEmptyPasswordNotification()
         }
-        if (!(loginTextField.text == "") || !(passwordTextField.text == "")), let username = loginTextField.text, let password = passwordTextField.text {
+        if (!(loginTextField.text == "") && !(passwordTextField.text == "")), let username = loginTextField.text, let password = passwordTextField.text {
             let buttonActivityIndicator = ButtonActivityIndicator(button: loginButtonLabel, originalButtonText: "Войти")
             buttonActivityIndicator.showButtonLoading()
 

@@ -32,10 +32,10 @@ private extension TabBarConfigurator {
         
         allTabs.forEach { tab in
             let viewController = getCurrentViewController(tab: tab)
-            //let navigationController = UINavigationController(rootViewController: viewController)
+            let navigationController = UINavigationController(rootViewController: viewController)
             let tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: tab.selectedImage)
             viewController.tabBarItem = tabBarItem
-            viewControllers.append(viewController)
+            viewControllers.append(navigationController)
         }
         return viewControllers
     }
@@ -43,7 +43,7 @@ private extension TabBarConfigurator {
     func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .catalog:
-            return AuthViewController()
+            return CatalogViewController()
         case .favorites:
             return UIViewController()
         case .cart:
