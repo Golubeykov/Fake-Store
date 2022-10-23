@@ -143,6 +143,13 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = catalogModel.catalog[indexPath.row].title
+        let productsController = ProductsViewController(category: category)
+        navigationController?.pushViewController(productsController, animated: true)
+        catalogTableView.deselectRow(at: indexPath, animated: true)
+    }
+
 }
 
 //MARK: - Handle keyboard's show-up methods
@@ -151,6 +158,7 @@ extension CatalogViewController {
     //Скрытие клавиатуры по тапу
     func hideKeyboardWhenTapped() {
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        hideKeyboardGesture.cancelsTouchesInView = false
         view?.addGestureRecognizer(hideKeyboardGesture)
     }
 
