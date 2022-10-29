@@ -41,6 +41,8 @@
 		3A774B6028F8711E003D5466 /* AuthRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A774B5F28F8711E003D5466 /* AuthRequestModel.swift */; };
 		3A774B6228F8712A003D5466 /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A774B6128F8712A003D5466 /* AuthResponseModel.swift */; };
 		3A774B6428F87133003D5466 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A774B6328F87133003D5466 /* AuthService.swift */; };
+		3A78B716290DB0BC006B4695 /* DetailedProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78B714290DB0BC006B4695 /* DetailedProductViewController.swift */; };
+		3A78B717290DB0BC006B4695 /* DetailedProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */; };
 		3AAE3ED529040BE1004D8CBD /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */; };
 		3AAE3ED629040BE1004D8CBD /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */; };
 		3AAE3EDD29040F46004D8CBD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EDC29040F46004D8CBD /* CatalogService.swift */; };
@@ -86,6 +88,8 @@
 		3A774B5F28F8711E003D5466 /* AuthRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestModel.swift; sourceTree = "<group>"; };
 		3A774B6128F8712A003D5466 /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
 		3A774B6328F87133003D5466 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		3A78B714290DB0BC006B4695 /* DetailedProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductViewController.swift; sourceTree = "<group>"; };
+		3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedProductViewController.xib; sourceTree = "<group>"; };
 		3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		3AAE3EDC29040F46004D8CBD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 		3A62B69728E1957E00A9E8EB /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3A78B713290DB091006B4695 /* DetailedProductModule */,
 				3AAE3EE02904867F004D8CBD /* ProductsModule */,
 				3A77362A28E2E3D50044DAEA /* CatalogModule */,
 			);
@@ -356,6 +361,15 @@
 				3A774B5D28F86A1E003D5466 /* ErrorTypes.swift */,
 			);
 			path = ErrorTypes;
+			sourceTree = "<group>";
+		};
+		3A78B713290DB091006B4695 /* DetailedProductModule */ = {
+			isa = PBXGroup;
+			children = (
+				3A78B714290DB0BC006B4695 /* DetailedProductViewController.swift */,
+				3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */,
+			);
+			path = DetailedProductModule;
 			sourceTree = "<group>";
 		};
 		3AAE3ED729040F07004D8CBD /* CatalogService */ = {
@@ -441,6 +455,7 @@
 				3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */,
 				3A62B68C28E18FFF00A9E8EB /* Assets.xcassets in Resources */,
 				3A4A72AC2905628C00D4236D /* ProductsViewController.xib in Resources */,
+				3A78B717290DB0BC006B4695 /* DetailedProductViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +469,7 @@
 				3AAE3ED529040BE1004D8CBD /* CatalogViewController.swift in Sources */,
 				3A47E57C2901B14700026974 /* BaseUINavigationController.swift in Sources */,
 				3A27BA3928F853EB00C9AB52 /* BaseNetworkTask.swift in Sources */,
+				3A78B716290DB0BC006B4695 /* DetailedProductViewController.swift in Sources */,
 				3AAE3EE4290486F8004D8CBD /* UIImageView+ImageLoader.swift in Sources */,
 				3A4A72B0290562BE00D4236D /* ProductCollectionViewCell.swift in Sources */,
 				3A47E56F2901ACCD00026974 /* AlertView.swift in Sources */,

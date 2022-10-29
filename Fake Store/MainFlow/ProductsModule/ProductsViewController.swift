@@ -164,4 +164,9 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
         return ConstantConstraints.hSpaceBetweenItems
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailedProductViewController = DetailedProductViewController(model: productsModel.products[indexPath.row])
+        navigationController?.pushViewController(detailedProductViewController, animated: true)
+    }
+
 }
