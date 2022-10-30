@@ -38,7 +38,7 @@ final class CartProductTableViewCell: UITableViewCell {
         configureProductImageView(model: model)
         configureNameLabel(model: model)
         configurePriceLabel(model: model)
-        configureQuantityLabel()
+        configureQuantityLabel(model: model)
         setGradientBackground()
     }
 
@@ -58,8 +58,8 @@ final class CartProductTableViewCell: UITableViewCell {
         productPriceLabel.font = .systemFont(ofSize: 15, weight: .bold)
     }
 
-    private func configureQuantityLabel() {
-        productQuantityLabel.text = "Количество в корзине: 1"
+    private func configureQuantityLabel(model: ProductModel) {
+        productQuantityLabel.text = "Количество: \(model.count)"
         productQuantityLabel.font = .systemFont(ofSize: 15, weight: .regular)
     }
 
@@ -70,8 +70,8 @@ final class CartProductTableViewCell: UITableViewCell {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]
         gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.bounds
-        let backgroundView = UIView(frame: self.bounds)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 102)
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 102))
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         self.backgroundView = backgroundView
 

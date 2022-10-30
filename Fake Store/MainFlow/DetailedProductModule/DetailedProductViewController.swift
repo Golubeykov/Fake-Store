@@ -21,7 +21,7 @@ final class DetailedProductViewController: UIViewController {
 
     // MARK: - Properties
 
-    let model: ProductModel
+    var model: ProductModel
     var imageUrlInString: String = "" {
         didSet {
             guard let url = URL(string: imageUrlInString) else {
@@ -58,8 +58,11 @@ final class DetailedProductViewController: UIViewController {
 
     @IBAction func stepperAction(_ sender: UIStepper) {
         goodsInCartLabel.text = "Количество товара: \(Int(sender.value))"
+        model.count = Int(sender.value)
     }
     @IBAction func goToCartButtonAction(_ sender: Any) {
+        CartService().addProductToCart(product: model)
+        tabBarController?.selectedIndex = 2
     }
 
 }
@@ -112,7 +115,7 @@ private extension DetailedProductViewController {
 
     func configureLoginButton() {
         goToCartButtonLabel.backgroundColor = ColorsStorage.orange
-        goToCartButtonLabel.setTitle("Перейти в корзину", for: .normal)
+        goToCartButtonLabel.setTitle("Добавить в корзину", for: .normal)
         goToCartButtonLabel.tintColor = ColorsStorage.black
     }
 

@@ -9,15 +9,25 @@ import UIKit
 
 final class CartViewController: UIViewController {
 
+    // MARK: - Constants
+
+    private let cartProductCell = "\(CartProductTableViewCell.self)"
+
     // MARK: - IBOutlets
 
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var makeOrderButtonLabel: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    // MARK: - Private properties
+
+    private let productsInCart = CartService.shared
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        productsInCart.loadProducts()
         configureAppearance()
     }
 
@@ -38,6 +48,7 @@ final class CartViewController: UIViewController {
 private extension CartViewController {
 
     func configureAppearance() {
+        configureModel()
         configureButton()
         configureTableView()
         setGradientBackground()
@@ -49,6 +60,9 @@ private extension CartViewController {
 
     func configureTableView() {
         cartTableView.backgroundColor = ColorsStorage.clear
+        cartTableView.dataSource = self
+        cartTableView.allowsSelection = false
+        cartTableView.register(UINib(nibName: cartProductCell, bundle: .main), forCellReuseIdentifier: cartProductCell)
     }
 
     func configureButton() {
@@ -66,6 +80,42 @@ private extension CartViewController {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    func configureModel() {
+        productsInCart.didProductsFetchErrorHappened = { [weak self] in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.activityIndicator.isHidden = true
+                let textForSnackBar = AllCatalogModel.errorDescription
+                let model = SnackbarModel(text: textForSnackBar)
+                let snackbar = SnackbarView(model: model, viewController: self)
+                snackbar.showSnackBar()
+            }
+        }
+        productsInCart.didProductsUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.activityIndicator.isHidden = true
+                self.cartTableView.reloadData()
+             }
+        }
+    }
+
+}
+
+// MARK: - Table view data source
+
+extension CartViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        productsInCart.productsInCart.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = cartTableView.dequeueReusableCell(withIdentifier: cartProductCell) as? CartProductTableViewCell else { return UITableViewCell() }
+        cell.configureCell(model: productsInCart.productsInCart[indexPath.row])
+        return cell
     }
 
 }

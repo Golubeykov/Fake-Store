@@ -13,5 +13,6 @@ struct ProductsResponseModel: Decodable {
     let title: String
     let price: Double
     let image: String
+    let category: String
 
 }

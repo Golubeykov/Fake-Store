@@ -2,16 +2,17 @@
 //  ProductsService.swift
 //  Fake Store
 //
-//  Created by Антон Голубейков on 30.10.2022.
+//  Created by Антон Голубейков on 23.10.2022.
 //
 
 import Foundation
 
-struct ProductsService {
+struct ProductsInCategoryService {
 
+    let category: String
     var dataTask: BaseNetworkTask<EmptyModel, [ProductsResponseModel]> { BaseNetworkTask<EmptyModel, [ProductsResponseModel]> (
         method: .get,
-        path: "products"
+        path: "products/category/\(category)"
     )
     }
 

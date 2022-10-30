@@ -24,8 +24,8 @@ final class AllProductsModel {
 
     // MARK: - Methods
 
-    func loadProducts(for category: String) {
-        let productService = ProductsService(category: category)
+    func loadProductsInCategory(_ category: String) {
+        let productService = ProductsInCategoryService(category: category)
         productService.loadProducts { [weak self] result in
             switch result {
             case .success(let productsResult):
@@ -51,7 +51,7 @@ final class AllProductsModel {
         }
     }
 
-    func removeAllPosts() {
+    func removeAllProducts() {
         products = []
     }
 
@@ -64,5 +64,6 @@ struct ProductModel {
     let price: Double
     let imageURL: String
     let category: String
+    var count: Int = 0
 
 }

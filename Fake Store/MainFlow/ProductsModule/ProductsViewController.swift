@@ -49,7 +49,7 @@ final class ProductsViewController: BaseUIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsModel.loadProducts(for: category)
+        productsModel.loadProductsInCategory(category)
         configureAppearance()
 
     }
@@ -61,7 +61,7 @@ final class ProductsViewController: BaseUIViewController {
     }
 
     deinit {
-        productsModel.removeAllPosts()
+        productsModel.removeAllProducts()
     }
 
 }
@@ -117,7 +117,7 @@ private extension ProductsViewController {
     }
 
     @objc func pullToRefresh(_ sender: AnyObject) {
-         self.productsModel.loadProducts(for: category)
+         self.productsModel.loadProductsInCategory(category)
          refreshControl.endRefreshing()
     }
 
