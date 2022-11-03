@@ -15,6 +15,7 @@ final class CartProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productQuantityLabel: UILabel!
+    @IBOutlet weak var stepperLabel: UIStepper!
 
     // MARK: - Properties
 
@@ -26,10 +27,12 @@ final class CartProductTableViewCell: UITableViewCell {
              productImageView.loadImage(from: url)
         }
     }
+    var stepperAction: ((Int) -> Void) = { _ in }
 
     // MARK: - Actions
 
     @IBAction func stepperAction(_ sender: UIStepper) {
+        stepperAction(Int(sender.value))
     }
 
     // MARK: - Methods
@@ -39,6 +42,7 @@ final class CartProductTableViewCell: UITableViewCell {
         configureNameLabel(model: model)
         configurePriceLabel(model: model)
         configureQuantityLabel(model: model)
+        configureStepperLabel(model: model)
         setGradientBackground()
     }
 
@@ -61,6 +65,10 @@ final class CartProductTableViewCell: UITableViewCell {
     private func configureQuantityLabel(model: ProductModel) {
         productQuantityLabel.text = "Количество: \(model.count)"
         productQuantityLabel.font = .systemFont(ofSize: 15, weight: .regular)
+    }
+
+    private func configureStepperLabel(model: ProductModel) {
+        stepperLabel.value = Double(model.count)
     }
 
     private func setGradientBackground() {

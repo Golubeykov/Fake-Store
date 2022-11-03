@@ -38,7 +38,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs3-23-yoB">
                         <rect key="frame" x="357" y="16" width="130" height="70"/>
                         <subviews>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-KM-jgz">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-KM-jgz">
                                 <rect key="frame" x="18" y="19" width="94" height="32"/>
                                 <connections>
                                     <action selector="stepperAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="DOT-lT-nwj"/>
@@ -83,6 +83,7 @@
                 <outlet property="productNameLabel" destination="XV7-br-ZDt" id="RQ1-Mx-E9y"/>
                 <outlet property="productPriceLabel" destination="bjK-bW-GZr" id="arh-HN-hNU"/>
                 <outlet property="productQuantityLabel" destination="dav-FR-PeT" id="OJl-6g-Z4K"/>
+                <outlet property="stepperLabel" destination="hRD-KM-jgz" id="2TR-FS-rQm"/>
             </connections>
             <point key="canvasLocation" x="370" y="30.568720379146917"/>
         </tableViewCell>

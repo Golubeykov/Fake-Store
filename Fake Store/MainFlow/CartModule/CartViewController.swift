@@ -21,24 +21,32 @@ final class CartViewController: UIViewController {
 
     // MARK: - Private properties
 
-    private let productsInCart = CartService.shared
+    private var cartService = CartService.shared
+    private var productsInCart: [ProductModel] {
+        cartService.getProductsInCart()
+    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsInCart.loadProducts()
+        cartService.loadProducts()
         configureAppearance()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
+        cartTableView.reloadData()
     }
 
     // MARK: - Actions
 
     @IBAction func makeOrderButtonAction(_ sender: Any) {
+        appendConfirmingAlertView(for: self, text: "Заказ отправлен!") { [weak self] _ in
+            self?.cartService.removeAllProducts()
+            self?.cartTableView.reloadData()
+        }
     }
 
 }
@@ -83,7 +91,7 @@ private extension CartViewController {
     }
 
     func configureModel() {
-        productsInCart.didProductsFetchErrorHappened = { [weak self] in
+        cartService.didProductsFetchErrorHappened = { [weak self] in
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 self.activityIndicator.isHidden = true
@@ -93,7 +101,7 @@ private extension CartViewController {
                 snackbar.showSnackBar()
             }
         }
-        productsInCart.didProductsUpdated = { [weak self] in
+        cartService.didProductsUpdated = { [weak self] in
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 self.activityIndicator.isHidden = true
@@ -109,12 +117,18 @@ private extension CartViewController {
 extension CartViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        productsInCart.productsInCart.count
+        productsInCart.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = cartTableView.dequeueReusableCell(withIdentifier: cartProductCell) as? CartProductTableViewCell else { return UITableViewCell() }
-        cell.configureCell(model: productsInCart.productsInCart[indexPath.row])
+        cell.stepperAction = { [weak self] value in
+            guard let `self` = self else { return }
+            var productToChange = self.productsInCart[indexPath.row]
+            self.cartService.editProductsInCart(product: &productToChange, newQuantity: value)
+            self.cartTableView.reloadData()
+        }
+        cell.configureCell(model: productsInCart[indexPath.row])
         return cell
     }
 

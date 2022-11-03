@@ -51,6 +51,8 @@ final class DetailedProductViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        goodsInCartLabel.text = "Количество товара: \(UserDefaults.standard.integer(forKey: "\(model.id)"))"
+        stepper.value = Double(UserDefaults.standard.integer(forKey: "\(model.id)"))
         configureNavigationView()
     }
 
@@ -61,7 +63,7 @@ final class DetailedProductViewController: UIViewController {
         model.count = Int(sender.value)
     }
     @IBAction func goToCartButtonAction(_ sender: Any) {
-        CartService().addProductToCart(product: model)
+        CartService.shared.editProductsInCart(product: &model, newQuantity: model.count)
         tabBarController?.selectedIndex = 2
     }
 

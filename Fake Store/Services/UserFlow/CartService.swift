@@ -20,7 +20,7 @@ final class CartService {
     var didProductsUpdated: (() -> Void)?
     var didProductsFetchErrorHappened: (() -> Void)?
 
-    var productsInCart: [ProductModel] = []
+    private var productsInCart: [ProductModel] = []
 
     func loadProducts() {
         let productService = ProductsService()
@@ -35,8 +35,8 @@ final class CartService {
                                                category: productModel.category)
                     guard let `self` = self else { return }
                     if self.isProductInCart(product) {
-                        product.count = UserDefaults.standard.integer(forKey: "\(product.id)")
-                        self.productsInCart.append(product)
+                        let productCount = UserDefaults.standard.integer(forKey: "\(product.id)")
+                        self.editProductsInCart(product: &product, newQuantity: productCount)
                     }
                 }
                 self?.didProductsUpdated?()
@@ -58,15 +58,25 @@ final class CartService {
         productsInCart = []
     }
 
-    func addProductToCart(product: ProductModel) {
+    func getProductsInCart() -> [ProductModel] {
+        return productsInCart
+    }
+
+    func editProductsInCart(product: inout ProductModel, newQuantity: Int) {
+        product.count = newQuantity
         guard product.count != 0 else {
-            UserDefaults.standard.removeObject(forKey: "\(product.id)")
             guard let indexToRemove = productsInCart.firstIndex(where: { $0.id == product.id }) else { return }
             productsInCart.remove(at: indexToRemove)
+            UserDefaults.standard.removeObject(forKey: "\(product.id)")
             return
         }
+        if !isProductInCart(product) {
+            productsInCart.append(product)
+        } else {
+            guard let indexOfProduct = productsInCart.firstIndex(where: { $0.id == product.id }) else { return }
+            productsInCart[indexOfProduct].count = newQuantity
+        }
         UserDefaults.standard.set(product.count, forKey: "\(product.id)")
-        productsInCart.append(product)
     }
 
 }
