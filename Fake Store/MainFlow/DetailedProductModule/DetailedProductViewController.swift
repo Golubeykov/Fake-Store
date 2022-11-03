@@ -53,6 +53,7 @@ final class DetailedProductViewController: UIViewController {
         super.viewWillAppear(animated)
         goodsInCartLabel.text = "Количество товара: \(UserDefaults.standard.integer(forKey: "\(model.id)"))"
         stepper.value = Double(UserDefaults.standard.integer(forKey: "\(model.id)"))
+        model.count = UserDefaults.standard.integer(forKey: "\(model.id)")
         configureNavigationView()
     }
 
