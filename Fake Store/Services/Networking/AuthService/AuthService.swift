@@ -21,8 +21,7 @@ struct AuthService {
         dataTask.performRequest(input: credentials) { result in
             if case let .success(responseModel) = result {
                 do {
-//                    try dataTask.tokenStorage.set(newToken: TokenContainer(token: responseModel.token, receivingDate: .now))
-//                    try dataTask.profileStorage.set(profile: responseModel.user_info)
+                    try dataTask.tokenStorage.set(newToken: TokenContainer(token: responseModel.token, receivingDate: .now))
                     onResponseWasReceived(result)
                 } catch {
                     onResponseWasReceived(result)

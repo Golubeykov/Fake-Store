@@ -45,6 +45,8 @@
 		3A774B6428F87133003D5466 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A774B6328F87133003D5466 /* AuthService.swift */; };
 		3A78B716290DB0BC006B4695 /* DetailedProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78B714290DB0BC006B4695 /* DetailedProductViewController.swift */; };
 		3A78B717290DB0BC006B4695 /* DetailedProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */; };
+		3A90282029141CA500B8185C /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90281E29141CA500B8185C /* LogoutViewController.swift */; };
+		3A90282129141CA500B8185C /* LogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A90281F29141CA500B8185C /* LogoutViewController.xib */; };
 		3AAE3ED529040BE1004D8CBD /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */; };
 		3AAE3ED629040BE1004D8CBD /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */; };
 		3AAE3EDD29040F46004D8CBD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EDC29040F46004D8CBD /* CatalogService.swift */; };
@@ -98,6 +100,8 @@
 		3A774B6328F87133003D5466 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		3A78B714290DB0BC006B4695 /* DetailedProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductViewController.swift; sourceTree = "<group>"; };
 		3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedProductViewController.xib; sourceTree = "<group>"; };
+		3A90281E29141CA500B8185C /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		3A90281F29141CA500B8185C /* LogoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutViewController.xib; sourceTree = "<group>"; };
 		3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		3AAE3EDC29040F46004D8CBD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 		3A62B69728E1957E00A9E8EB /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3A90281D29141C6F00B8185C /* LogoutModule */,
 				3ADE69A1290DC18D002C8789 /* CartModule */,
 				3A78B713290DB091006B4695 /* DetailedProductModule */,
 				3AAE3EE02904867F004D8CBD /* ProductsModule */,
@@ -393,6 +398,15 @@
 				3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */,
 			);
 			path = DetailedProductModule;
+			sourceTree = "<group>";
+		};
+		3A90281D29141C6F00B8185C /* LogoutModule */ = {
+			isa = PBXGroup;
+			children = (
+				3A90281E29141CA500B8185C /* LogoutViewController.swift */,
+				3A90281F29141CA500B8185C /* LogoutViewController.xib */,
+			);
+			path = LogoutModule;
 			sourceTree = "<group>";
 		};
 		3AAE3ED729040F07004D8CBD /* CatalogService */ = {
@@ -495,6 +509,7 @@
 				3AAE3ED629040BE1004D8CBD /* CatalogViewController.xib in Resources */,
 				3A62B68F28E18FFF00A9E8EB /* LaunchScreen.storyboard in Resources */,
 				3A4A72B1290562BE00D4236D /* ProductCollectionViewCell.xib in Resources */,
+				3A90282129141CA500B8185C /* LogoutViewController.xib in Resources */,
 				3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */,
 				3A62B68C28E18FFF00A9E8EB /* Assets.xcassets in Resources */,
 				3A4A72AC2905628C00D4236D /* ProductsViewController.xib in Resources */,
@@ -548,6 +563,7 @@
 				3A47E5722901ACF600026974 /* ButtonActivityIndicator.swift in Sources */,
 				3A774B6428F87133003D5466 /* AuthService.swift in Sources */,
 				3ADE69A9290DC21A002C8789 /* CartProductTableViewCell.swift in Sources */,
+				3A90282029141CA500B8185C /* LogoutViewController.swift in Sources */,
 				3A2D9429290F0F0600A7A6E7 /* ProductsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

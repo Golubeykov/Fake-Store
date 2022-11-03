@@ -13,6 +13,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: - UIApplication
     var window: UIWindow?
+    var tokenStorage: TokenStorage {
+        BaseTokenStorage()
+    }
     let lauchScreenStoryBoard = UIStoryboard(name: "LaunchScreen", bundle: .main)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -29,8 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      func startApplicationProcess() {
          runLaunchScreen()
 
-         //if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
-         if false {
+         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
              runMainFlow()
          } else {
              runAuthFlow()

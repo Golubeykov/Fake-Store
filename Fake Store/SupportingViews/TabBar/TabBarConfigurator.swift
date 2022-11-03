@@ -49,7 +49,7 @@ private extension TabBarConfigurator {
         case .cart:
             return CartViewController()
         case .profile:
-            return UIViewController()
+            return LogoutViewController()
         }
     }
 }

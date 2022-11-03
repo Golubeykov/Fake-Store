@@ -166,8 +166,6 @@ private extension AuthViewController {
     func configureLoginButton() {
         loginButtonLabel.backgroundColor = ColorsStorage.orange
         loginButtonLabel.setTitle("Войти", for: .normal)
-//        loginButtonLabel.setAttributedTitle(loginButtonLabelText, for: .normal)
-//        loginButtonLabel.setAttributedTitle(NSAttributedString(string: ""), for: .selected)
         loginButtonLabel.tintColor = ColorsStorage.black
     }
 

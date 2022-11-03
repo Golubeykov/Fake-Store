@@ -21,6 +21,9 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
     let path: String
     let method: NetworkMethod
     let session: URLSession = URLSession(configuration: .default)
+    var tokenStorage: TokenStorage {
+        BaseTokenStorage()
+    }
 
     // MARK: - Initializtion
 
