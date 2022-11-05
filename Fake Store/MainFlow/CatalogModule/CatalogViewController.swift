@@ -23,6 +23,7 @@ final class CatalogViewController: UIViewController {
     // MARK: - Private properties
 
     private let catalogModel = AllCatalogModel.shared
+    private var catalog = AllCatalogModel.shared.getCatalog(for: "")
     private let cellReuseIndentifier = "CatalogCell"
     private let navigationBarTitle = "Каталог"
     private let searchBarPlaceholder = "Поиск"
@@ -105,6 +106,7 @@ private extension CatalogViewController {
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 self.activityIndicator.isHidden = true
+                self.catalog = self.catalogModel.getCatalog(for: "")
                 self.catalogTableView.reloadData()
              }
         }
@@ -113,6 +115,7 @@ private extension CatalogViewController {
     func configureSearchBar() {
         searchBar.placeholder = searchBarPlaceholder
         searchBar.barTintColor = ColorsStorage.backgroundBlue
+        searchBar.delegate = self
     }
 
     func configurePullToRefresh() {
@@ -134,17 +137,17 @@ private extension CatalogViewController {
 extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        catalogModel.catalog.count
+        catalog.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = catalogTableView.dequeueReusableCell(withIdentifier: cellReuseIndentifier, for: indexPath)
-        cell.textLabel?.text = catalogModel.catalog[indexPath.row].title
+        cell.textLabel?.text = catalog[indexPath.row].title
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = catalogModel.catalog[indexPath.row].title
+        let category = catalog[indexPath.row].title
         let productsController = ProductsViewController(category: category)
         navigationController?.pushViewController(productsController, animated: true)
         catalogTableView.deselectRow(at: indexPath, animated: true)
@@ -205,5 +208,20 @@ extension CatalogViewController {
         }
     }
 
+}
 
+extension CatalogViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        searchBar.resignFirstResponder()
+        if !searchText.isEmpty {
+            catalog = catalogModel.getCatalog(for: searchText.lowercased())
+            catalogTableView.reloadData()
+        } else {
+            catalog = catalogModel.getCatalog(for: "")
+            catalogTableView.reloadData()
+        }
+    }
+    
 }

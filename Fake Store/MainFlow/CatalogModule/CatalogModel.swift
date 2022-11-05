@@ -18,6 +18,20 @@ final class AllCatalogModel {
     let catalogService = CatalogService()
     var catalog: [CatalogModel] = []
 
+    func getCatalog(for name: String) -> [CatalogModel] {
+        if name == "" {
+            return catalog
+        } else {
+            var filteredCatalog = [CatalogModel]()
+            catalog.forEach { item in
+                if item.title.lowercased().contains("\(name)") {
+                    filteredCatalog.append(item)
+                }
+            }
+            return filteredCatalog
+        }
+    }
+
     func loadCatalog() {
         catalogService.requestCategoriesList { [weak self] result in
             switch result {
