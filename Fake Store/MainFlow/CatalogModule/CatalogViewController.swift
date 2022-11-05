@@ -181,14 +181,28 @@ extension CatalogViewController {
         // Получаем размер клавиатуры
         let info = notification.userInfo! as NSDictionary
         let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+                as? Double else {
+            return
+        }
         // Добавляем отступ, равный размеру клавиатуры (80 это размер таббара, на данном этапе упрощено константой, целевая реализация - расчитывать высоту topTabBarController
-        bottomConstraint.constant = -kbSize.height + 80
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) { [weak self] in
+            self?.bottomConstraint.constant = -kbSize.height + 80
+            self?.view.layoutIfNeeded()
+        }
 
 
     }
     //Когда клавиатура исчезает
     @objc func keyboardWillBeHidden(notification: Notification) {
-        bottomConstraint.constant = 0
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+                as? Double else {
+            return
+        }
+        UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut]) { [weak self] in
+            self?.bottomConstraint.constant = 0
+            self?.view.layoutIfNeeded()
+        }
     }
 
 
