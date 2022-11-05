@@ -18,6 +18,7 @@ class ColorsStorage {
     static let lightTextGray = UIColor(rgb: 0xDFDFDF)
     static let orange = UIColor(rgb: 0xFDB87D)
     static let gradientBlue = UIColor(rgb: 0x88A7D6)
+    static let darkBlue = UIColor(rgb: 0x5B7BAC)
 }
 
 extension UIColor {

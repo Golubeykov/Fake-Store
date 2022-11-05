@@ -12,7 +12,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     // MARK: - Constants
 
     private enum Constants {
-        static let favoriteTapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundBlue)
+        static let favoriteTapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.darkBlue)
         static let favoriteUntapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundGray)
     }
 
