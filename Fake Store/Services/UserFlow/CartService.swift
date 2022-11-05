@@ -71,7 +71,7 @@ final class CartService {
             UserDefaults.standard.removeObject(forKey: "\(product.id)")
             return
         }
-        if !isProductInCart(product) {
+        if !isProductInCart(product) || !productsInCart.contains(where: { $0.id == product.id }) {
             productsInCart.append(product)
         } else {
             guard let indexOfProduct = productsInCart.firstIndex(where: { $0.id == product.id }) else { return }
