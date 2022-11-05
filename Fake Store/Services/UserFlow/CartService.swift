@@ -78,13 +78,8 @@ final class CartService {
             productsInCart[indexOfProduct].count = newQuantity
         }
         UserDefaults.standard.set(product.count, forKey: "\(product.id)")
+        ProductsViewController.cartStatusChanged = true
     }
-
-}
-
-// MARK: - Private extension
-
-private extension CartService {
 
     func isProductInCart(_ product: ProductModel) -> Bool {
         UserDefaults.standard.value(forKey: "\(product.id)") != nil ? true : false

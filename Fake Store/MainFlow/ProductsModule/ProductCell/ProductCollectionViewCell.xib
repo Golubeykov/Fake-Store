@@ -49,9 +49,22 @@
                             <action selector="favoriteProductButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0n0-0m-pQS"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC4-uh-Ug0">
+                        <rect key="frame" x="215" y="296" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="H5e-W2-V2Y"/>
+                            <constraint firstAttribute="height" constant="20" id="Zkl-3Z-kxu"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="cartIcon"/>
+                        <connections>
+                            <action selector="addToCartButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="6CR-XH-Jux"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="u1s-wJ-IA2" firstAttribute="bottom" secondItem="sC4-uh-Ug0" secondAttribute="bottom" constant="5" id="IET-Sb-6BY"/>
                 <constraint firstItem="m75-cH-rGT" firstAttribute="top" secondItem="3KI-EF-vBh" secondAttribute="bottom" constant="1" id="Sr4-l7-v4e"/>
                 <constraint firstItem="IVd-s0-7TX" firstAttribute="top" secondItem="m75-cH-rGT" secondAttribute="bottom" constant="1" id="WEQ-MG-ghN"/>
                 <constraint firstItem="IVd-s0-7TX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="WQQ-fI-ajq"/>
@@ -64,9 +77,11 @@
                 <constraint firstAttribute="bottom" secondItem="IVd-s0-7TX" secondAttribute="bottom" constant="11" id="qFz-Mk-gWN"/>
                 <constraint firstItem="3KI-EF-vBh" firstAttribute="top" secondItem="u1s-wJ-IA2" secondAttribute="bottom" constant="8" id="sgu-ng-poh"/>
                 <constraint firstItem="m75-cH-rGT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="yAz-la-kZE"/>
+                <constraint firstItem="u1s-wJ-IA2" firstAttribute="trailing" secondItem="sC4-uh-Ug0" secondAttribute="trailing" id="zQK-uO-hFf"/>
             </constraints>
             <size key="customSize" width="246" height="405"/>
             <connections>
+                <outlet property="addToCartButtonLabel" destination="sC4-uh-Ug0" id="SMV-HQ-VoV"/>
                 <outlet property="categoryLabel" destination="IVd-s0-7TX" id="ffJ-D4-qkB"/>
                 <outlet property="favoriteProductButton" destination="UFT-Gf-ahg" id="lgH-9L-3pC"/>
                 <outlet property="nameTagLabel" destination="m75-cH-rGT" id="eLF-7q-eBb"/>
@@ -77,6 +92,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="cartIcon" width="19" height="22"/>
         <image name="favoriteIcon" width="26" height="24"/>
     </resources>
 </document>

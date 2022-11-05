@@ -14,6 +14,8 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     private enum Constants {
         static let favoriteTapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.darkBlue)
         static let favoriteUntapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundGray)
+        static let cartTapped = UIImage(named: "cartIcon")?.withTintColor(ColorsStorage.darkBlue)
+        static let cartUntapped = UIImage(named: "cartIcon")?.withTintColor(ColorsStorage.backgroundGray)
     }
 
     // MARK: - IBOutlets
@@ -23,6 +25,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var nameTagLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var favoriteProductButton: UIButton!
+    @IBOutlet weak var addToCartButtonLabel: UIButton!
 
     // MARK: - Properties
 
@@ -34,16 +37,26 @@ final class ProductCollectionViewCell: UICollectionViewCell {
              productImageView.loadImage(from: url)
         }
     }
-    var buttonImage: UIImage? {
+    var favoriteButtonImage: UIImage? {
         return isFavorite ? Constants.favoriteTapped : Constants.favoriteUntapped
     }
+    var cartButtonImage: UIImage? {
+        return isProductInCart ? Constants.cartTapped : Constants.cartUntapped
+    }
+
     var isFavorite = false {
         didSet {
-            favoriteProductButton.setImage(buttonImage, for: .normal)
+            favoriteProductButton.setImage(favoriteButtonImage, for: .normal)
+        }
+    }
+    var isProductInCart = false {
+        didSet {
+            addToCartButtonLabel.setImage(cartButtonImage, for: .normal)
         }
     }
     let favoritesStorage = FavoritesStorage.shared
     var didFavoritesTap: (() -> Void)?
+    var didCartButtonTapped: (() -> Void)?
 
     // MARK: - Methods
 
@@ -67,6 +80,11 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         isFavorite.toggle()
     }
 
+    @IBAction func addToCartButtonAction(_ sender: Any) {
+        didCartButtonTapped?()
+        isProductInCart.toggle()
+    }
+    
 
     // MARK: - Private methods
 

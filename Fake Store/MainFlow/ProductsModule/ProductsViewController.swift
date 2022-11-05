@@ -34,6 +34,7 @@ final class ProductsViewController: BaseUIViewController {
     let category: String
     private let productsModel = AllProductsModel.shared
     static var favoriteTapStatus: Bool = false
+    static var cartStatusChanged: Bool = false
 
     // MARK: - Init
 
@@ -59,9 +60,10 @@ final class ProductsViewController: BaseUIViewController {
         super.viewWillAppear(animated)
         configureNavigationBarStyle()
         setGradientBackground()
-        if ProductsViewController.favoriteTapStatus {
+        if ProductsViewController.favoriteTapStatus || ProductsViewController.cartStatusChanged {
                 productsCollectionView.reloadData()
                 ProductsViewController.favoriteTapStatus = false
+                ProductsViewController.cartStatusChanged = false
             }
     }
 
@@ -153,8 +155,13 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
             activityIndicator.isHidden = true
             cell.configureCell(for: productsModel.productsInCategory[indexPath.row])
             cell.isFavorite = productsModel.productsInCategory[indexPath.row].isFavorite
+            cell.isProductInCart = CartService.shared.isProductInCart(productsModel.productsInCategory[indexPath.row])
             cell.didFavoritesTap = { [weak self] in
                 self?.productsCollectionView.reloadData()
+            }
+            cell.didCartButtonTapped = { [weak self] in
+                guard var product = self?.productsModel.productsInCategory[indexPath.row] else { return }
+                CartService.shared.editProductsInCart(product: &product, newQuantity: 1)
             }
         }
         return cell

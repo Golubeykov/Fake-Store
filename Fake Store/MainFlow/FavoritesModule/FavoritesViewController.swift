@@ -166,6 +166,7 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
             activityIndicator.isHidden = true
             cell.configureCell(for: productsModel.favoriteItems[indexPath.row])
             cell.isFavorite = productsModel.favoriteItems[indexPath.row].isFavorite
+            cell.isProductInCart = CartService.shared.isProductInCart(productsModel.favoriteItems[indexPath.row])
             cell.didFavoritesTap = { [weak self] in
                 self?.favoritesCollectionView.reloadData()
             }
