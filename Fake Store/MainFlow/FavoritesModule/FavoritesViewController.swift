@@ -170,6 +170,10 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
             cell.didFavoritesTap = { [weak self] in
                 self?.favoritesCollectionView.reloadData()
             }
+            cell.didCartButtonTapped = { [weak self] in
+                guard var product = self?.productsModel.favoriteItems[indexPath.row] else { return }
+                CartService.shared.editProductsInCart(product: &product, newQuantity: 1)
+            }
         }
         return cell
     }
