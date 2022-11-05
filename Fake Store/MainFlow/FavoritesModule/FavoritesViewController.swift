@@ -1,15 +1,15 @@
 //
-//  ProductsViewController.swift
+//  FavoritesViewController.swift
 //  Fake Store
 //
-//  Created by Антон Голубейков on 23.10.2022.
+//  Created by Антон Голубейков on 05.11.2022.
 //
 
 import UIKit
 
-final class ProductsViewController: BaseUIViewController {
+final class FavoritesViewController: BaseUIViewController {
 
-    //MARK: - Constants
+    // MARK: - Constants
 
     private enum ConstantConstraints {
         static let collectionViewPadding: CGFloat = 16
@@ -18,12 +18,19 @@ final class ProductsViewController: BaseUIViewController {
     }
     private let cellProportion: Double = 333/196
     private let allProductsCollectionViewCell: String = "\(ProductCollectionViewCell.self)"
-    private let navigationTitle = "Каталог"
+    private let navigationTitle = "Избранное"
+    private let alertViewText: String = "Вы точно хотите удалить из избранного?"
 
-    // MARK: - IBOutlets
+    // MARK: - IBOutletls
 
-    @IBOutlet weak var productsCollectionView: UICollectionView!
+    @IBOutlet weak var favoritesCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyFavoritesNotificationText: UILabel!
+
+    // MARK: - Properties
+
+    static var favoriteTapStatus: Bool = false
+    static var successLoadingPostsAfterZeroScreen: Bool = false
 
     // MARK: - Views
 
@@ -31,54 +38,43 @@ final class ProductsViewController: BaseUIViewController {
 
     // MARK: - Private properties
 
-    let category: String
     private let productsModel = AllProductsModel.shared
-    static var favoriteTapStatus: Bool = false
-
-    // MARK: - Init
-
-    init(category: String) {
-        self.category = category
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsModel.loadProductsInCategory(category)
+        productsModel.loadProducts()
         configureAppearance()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBarStyle()
-        setGradientBackground()
-        if ProductsViewController.favoriteTapStatus {
-                productsCollectionView.reloadData()
-                ProductsViewController.favoriteTapStatus = false
-            }
-    }
-
-    deinit {
-        productsModel.removeAllProducts()
+        if !(productsModel.favoriteItems.isEmpty) {
+            nonEmptyFavoritesNotification()
+            favoritesCollectionView.reloadData()
+            FavoritesViewController.successLoadingPostsAfterZeroScreen = false
+        }
+        if FavoritesViewController.favoriteTapStatus {
+            favoritesCollectionView.reloadData()
+            FavoritesViewController.favoriteTapStatus = false
+            productsModel.favoriteItems.isEmpty ? emptyFavoritesNotification() : nonEmptyFavoritesNotification()
+        }
     }
 
 }
 
 // MARK: - Private methods
 
-private extension ProductsViewController {
+private extension FavoritesViewController {
 
     func configureAppearance() {
         configureModel()
         configureCollectionView()
         configurePullToRefresh()
+        nonEmptyFavoritesNotification()
+        setGradientBackground()
     }
 
     func configureNavigationBarStyle() {
@@ -88,10 +84,10 @@ private extension ProductsViewController {
     }
 
     func configureCollectionView() {
-        productsCollectionView.register(UINib(nibName: allProductsCollectionViewCell, bundle: .main), forCellWithReuseIdentifier: allProductsCollectionViewCell)
-        productsCollectionView.dataSource = self
-        productsCollectionView.delegate = self
-        productsCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+        favoritesCollectionView.register(UINib(nibName: allProductsCollectionViewCell, bundle: .main), forCellWithReuseIdentifier: allProductsCollectionViewCell)
+        favoritesCollectionView.dataSource = self
+        favoritesCollectionView.delegate = self
+        favoritesCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
     }
 
     func configureModel() {
@@ -109,7 +105,12 @@ private extension ProductsViewController {
             DispatchQueue.main.async {
                 guard let `self` = self else { return }
                 self.activityIndicator.isHidden = true
-                self.productsCollectionView.reloadData()
+                if !(self.productsModel.favoriteItems.isEmpty) {
+                    self.nonEmptyFavoritesNotification()
+                } else {
+                    self.emptyFavoritesNotification()
+                }
+                self.favoritesCollectionView.reloadData()
              }
         }
     }
@@ -118,15 +119,16 @@ private extension ProductsViewController {
         refreshControl.addTarget(self, action: #selector(self.pullToRefresh(_:)), for: .valueChanged)
         refreshControl.tintColor = ColorsStorage.lightGray
         refreshControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        productsCollectionView.addSubview(refreshControl)
+        favoritesCollectionView.addSubview(refreshControl)
     }
 
     @objc func pullToRefresh(_ sender: AnyObject) {
-         self.productsModel.loadProductsInCategory(category)
+         self.productsModel.loadProducts()
          refreshControl.endRefreshing()
     }
 
     func setGradientBackground() {
+        favoritesCollectionView.backgroundColor = ColorsStorage.clear
         let colorTop = ColorsStorage.white.cgColor
         let colorBottom = ColorsStorage.gradientBlue.cgColor
 
@@ -135,26 +137,37 @@ private extension ProductsViewController {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, at: 0)
+
+    }
+
+    func emptyFavoritesNotification() {
+        refreshControl.isHidden = true
+        emptyFavoritesNotificationText.font = .systemFont(ofSize: 14, weight: .light)
+        emptyFavoritesNotificationText.text = "В избранном пусто"
+    }
+    func nonEmptyFavoritesNotification() {
+        configurePullToRefresh()
+        emptyFavoritesNotificationText.text = ""
     }
 
 }
 
 // MARK: - CollectionView
 
-extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        productsModel.productsInCategory.count
+        productsModel.favoriteItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: allProductsCollectionViewCell, for: indexPath)
+        let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: allProductsCollectionViewCell, for: indexPath)
         if let cell = cell as? ProductCollectionViewCell {
             activityIndicator.isHidden = true
-            cell.configureCell(for: productsModel.productsInCategory[indexPath.row])
-            cell.isFavorite = productsModel.productsInCategory[indexPath.row].isFavorite
+            cell.configureCell(for: productsModel.favoriteItems[indexPath.row])
+            cell.isFavorite = productsModel.favoriteItems[indexPath.row].isFavorite
             cell.didFavoritesTap = { [weak self] in
-                self?.productsCollectionView.reloadData()
+                self?.favoritesCollectionView.reloadData()
             }
         }
         return cell
@@ -174,8 +187,9 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailedProductViewController = DetailedProductViewController(model: productsModel.productsInCategory[indexPath.row])
+        let detailedProductViewController = DetailedProductViewController(model: productsModel.favoriteItems[indexPath.row])
         navigationController?.pushViewController(detailedProductViewController, animated: true)
     }
 
 }
+

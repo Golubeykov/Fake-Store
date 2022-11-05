@@ -21,6 +21,7 @@ final class CartService {
     var didProductsFetchErrorHappened: (() -> Void)?
 
     private var productsInCart: [ProductModel] = []
+    private let favoritesStorage = FavoritesStorage.shared
 
     func loadProducts() {
         let productService = ProductsService()

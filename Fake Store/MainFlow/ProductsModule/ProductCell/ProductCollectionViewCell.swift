@@ -9,12 +9,20 @@ import UIKit
 
 final class ProductCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Constants
+
+    private enum Constants {
+        static let favoriteTapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundBlue)
+        static let favoriteUntapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundGray)
+    }
+
     // MARK: - IBOutlets
 
     @IBOutlet private weak var productImageView: UIImageView!
     @IBOutlet private weak var priceTagLabel: UILabel!
     @IBOutlet private weak var nameTagLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var favoriteProductButton: UIButton!
 
     // MARK: - Properties
 
@@ -26,6 +34,16 @@ final class ProductCollectionViewCell: UICollectionViewCell {
              productImageView.loadImage(from: url)
         }
     }
+    var buttonImage: UIImage? {
+        return isFavorite ? Constants.favoriteTapped : Constants.favoriteUntapped
+    }
+    var isFavorite = false {
+        didSet {
+            favoriteProductButton.setImage(buttonImage, for: .normal)
+        }
+    }
+    let favoritesStorage = FavoritesStorage.shared
+    var didFavoritesTap: (() -> Void)?
 
     // MARK: - Methods
 
@@ -36,6 +54,19 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         configureCategoryLabel(model)
         setGradientBackground()
     }
+
+    // MARK: - Actions
+
+    @IBAction func favoriteProductButtonAction(_ sender: Any) {
+        didFavoritesTap?()
+        if favoritesStorage.isItemFavorite(item: self.nameTagLabel.text ?? "") {
+            favoritesStorage.removeFavorite(favoriteItem: self.nameTagLabel.text ?? "")
+        } else {
+            favoritesStorage.addFavorite(favoriteItem: self.nameTagLabel.text ?? "")
+        }
+        isFavorite.toggle()
+    }
+
 
     // MARK: - Private methods
 

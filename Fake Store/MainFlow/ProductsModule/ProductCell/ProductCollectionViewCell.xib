@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,13 +37,27 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-Gf-ahg">
+                        <rect key="frame" x="196" y="30" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="2Mv-BM-6oW"/>
+                            <constraint firstAttribute="width" constant="20" id="xIg-zM-CMu"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="favoriteIcon"/>
+                        <connections>
+                            <action selector="favoriteProductButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0n0-0m-pQS"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="m75-cH-rGT" firstAttribute="top" secondItem="3KI-EF-vBh" secondAttribute="bottom" constant="1" id="Sr4-l7-v4e"/>
                 <constraint firstItem="IVd-s0-7TX" firstAttribute="top" secondItem="m75-cH-rGT" secondAttribute="bottom" constant="1" id="WEQ-MG-ghN"/>
                 <constraint firstItem="IVd-s0-7TX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="WQQ-fI-ajq"/>
+                <constraint firstItem="UFT-Gf-ahg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="asV-4t-d40"/>
                 <constraint firstItem="3KI-EF-vBh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="eYN-Mp-7Ek"/>
+                <constraint firstAttribute="trailing" secondItem="UFT-Gf-ahg" secondAttribute="trailing" constant="30" id="jtM-Wi-fFt"/>
                 <constraint firstItem="u1s-wJ-IA2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="11" id="kps-i4-Xxi"/>
                 <constraint firstItem="u1s-wJ-IA2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="oga-4A-nVu"/>
                 <constraint firstAttribute="trailing" secondItem="u1s-wJ-IA2" secondAttribute="trailing" constant="11" id="omT-IN-HXx"/>
@@ -54,6 +68,7 @@
             <size key="customSize" width="246" height="405"/>
             <connections>
                 <outlet property="categoryLabel" destination="IVd-s0-7TX" id="ffJ-D4-qkB"/>
+                <outlet property="favoriteProductButton" destination="UFT-Gf-ahg" id="lgH-9L-3pC"/>
                 <outlet property="nameTagLabel" destination="m75-cH-rGT" id="eLF-7q-eBb"/>
                 <outlet property="priceTagLabel" destination="3KI-EF-vBh" id="YAh-EM-8Rd"/>
                 <outlet property="productImageView" destination="u1s-wJ-IA2" id="oIN-Gg-PqF"/>
@@ -61,4 +76,7 @@
             <point key="canvasLocation" x="184.61538461538461" y="146.80094786729856"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="favoriteIcon" width="26" height="24"/>
+    </resources>
 </document>

@@ -45,7 +45,7 @@ private extension TabBarConfigurator {
         case .catalog:
             return CatalogViewController()
         case .favorites:
-            return UIViewController()
+            return FavoritesViewController()
         case .cart:
             return CartViewController()
         case .profile:

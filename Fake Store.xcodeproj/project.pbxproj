@@ -47,6 +47,9 @@
 		3A78B717290DB0BC006B4695 /* DetailedProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */; };
 		3A90282029141CA500B8185C /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90281E29141CA500B8185C /* LogoutViewController.swift */; };
 		3A90282129141CA500B8185C /* LogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A90281F29141CA500B8185C /* LogoutViewController.xib */; };
+		3A9028252916E2C900B8185C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9028232916E2C900B8185C /* FavoritesViewController.swift */; };
+		3A9028262916E2C900B8185C /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A9028242916E2C900B8185C /* FavoritesViewController.xib */; };
+		3A9028292916E6D300B8185C /* FavoritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9028282916E6D300B8185C /* FavoritesStorage.swift */; };
 		3AAE3ED529040BE1004D8CBD /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */; };
 		3AAE3ED629040BE1004D8CBD /* CatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */; };
 		3AAE3EDD29040F46004D8CBD /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3EDC29040F46004D8CBD /* CatalogService.swift */; };
@@ -102,6 +105,9 @@
 		3A78B715290DB0BC006B4695 /* DetailedProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedProductViewController.xib; sourceTree = "<group>"; };
 		3A90281E29141CA500B8185C /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		3A90281F29141CA500B8185C /* LogoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutViewController.xib; sourceTree = "<group>"; };
+		3A9028232916E2C900B8185C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		3A9028242916E2C900B8185C /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		3A9028282916E6D300B8185C /* FavoritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStorage.swift; sourceTree = "<group>"; };
 		3AAE3ED329040BE1004D8CBD /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		3AAE3ED429040BE1004D8CBD /* CatalogViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogViewController.xib; sourceTree = "<group>"; };
 		3AAE3EDC29040F46004D8CBD /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 		3A62B69728E1957E00A9E8EB /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				3A902822291427B700B8185C /* FavoritesModule */,
 				3A90281D29141C6F00B8185C /* LogoutModule */,
 				3ADE69A1290DC18D002C8789 /* CartModule */,
 				3A78B713290DB091006B4695 /* DetailedProductModule */,
@@ -359,6 +366,7 @@
 		3A77362B28E2E41C0044DAEA /* Storages */ = {
 			isa = PBXGroup;
 			children = (
+				3A9028272916E6BF00B8185C /* FavoritesStorage */,
 				3A47E5662901ABD600026974 /* TokenStorage */,
 				3A774B5C28F86A11003D5466 /* ErrorTypes */,
 				3A77362D28E2E4340044DAEA /* ColorsStorage */,
@@ -407,6 +415,23 @@
 				3A90281F29141CA500B8185C /* LogoutViewController.xib */,
 			);
 			path = LogoutModule;
+			sourceTree = "<group>";
+		};
+		3A902822291427B700B8185C /* FavoritesModule */ = {
+			isa = PBXGroup;
+			children = (
+				3A9028232916E2C900B8185C /* FavoritesViewController.swift */,
+				3A9028242916E2C900B8185C /* FavoritesViewController.xib */,
+			);
+			path = FavoritesModule;
+			sourceTree = "<group>";
+		};
+		3A9028272916E6BF00B8185C /* FavoritesStorage */ = {
+			isa = PBXGroup;
+			children = (
+				3A9028282916E6D300B8185C /* FavoritesStorage.swift */,
+			);
+			path = FavoritesStorage;
 			sourceTree = "<group>";
 		};
 		3AAE3ED729040F07004D8CBD /* CatalogService */ = {
@@ -510,6 +535,7 @@
 				3A62B68F28E18FFF00A9E8EB /* LaunchScreen.storyboard in Resources */,
 				3A4A72B1290562BE00D4236D /* ProductCollectionViewCell.xib in Resources */,
 				3A90282129141CA500B8185C /* LogoutViewController.xib in Resources */,
+				3A9028262916E2C900B8185C /* FavoritesViewController.xib in Resources */,
 				3A4E60522900313C0059B27C /* AuthViewController.xib in Resources */,
 				3A62B68C28E18FFF00A9E8EB /* Assets.xcassets in Resources */,
 				3A4A72AC2905628C00D4236D /* ProductsViewController.xib in Resources */,
@@ -542,7 +568,9 @@
 				3A27BA3F28F8540D00C9AB52 /* NetworkTask.swift in Sources */,
 				3A77363328E2E80C0044DAEA /* TabBarConfigurator.swift in Sources */,
 				3A47E56C2901AC0A00026974 /* TokenStorage.swift in Sources */,
+				3A9028252916E2C900B8185C /* FavoritesViewController.swift in Sources */,
 				3ADE69A4290DC1A3002C8789 /* CartViewController.swift in Sources */,
+				3A9028292916E6D300B8185C /* FavoritesStorage.swift in Sources */,
 				3A4A72B629059F6A00D4236D /* ProductsResponseModel.swift in Sources */,
 				3A27BA3B28F853F900C9AB52 /* EmptyModel.swift in Sources */,
 				3AAE3EE2290486E5004D8CBD /* ImageLoader.swift in Sources */,
