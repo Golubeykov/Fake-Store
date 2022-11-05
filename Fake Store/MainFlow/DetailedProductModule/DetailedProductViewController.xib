@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailedProductViewController" customModule="Fake_Store" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="nGc-H6-6tp" id="Ym9-dt-ozc"/>
+                <outlet property="favoriteProductButton" destination="SI7-CF-Xv4" id="949-sh-eHD"/>
                 <outlet property="goToCartButtonLabel" destination="rRb-7k-2mV" id="aaG-2u-i39"/>
                 <outlet property="goodsInCartLabel" destination="z4S-Jg-ggX" id="h95-yV-s59"/>
                 <outlet property="productImageView" destination="Vx3-1R-Naq" id="3MJ-OW-o60"/>
@@ -78,6 +79,19 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SI7-CF-Xv4">
+                            <rect key="frame" x="288" y="10" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="5UQ-2a-2J4"/>
+                                <constraint firstAttribute="width" constant="60" id="MwY-Pb-hqQ"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Button" image="favoriteIcon"/>
+                            <buttonConfiguration key="configuration" style="plain" image="favoriteIcon"/>
+                            <connections>
+                                <action selector="favoriteProductButtonAction:" destination="-1" eventType="touchUpInside" id="XlH-Cf-b9T"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemCyanColor"/>
                     <constraints>
@@ -85,6 +99,7 @@
                         <constraint firstAttribute="trailing" secondItem="Vx3-1R-Naq" secondAttribute="trailing" constant="20" id="39l-S6-0Qx"/>
                         <constraint firstItem="dSc-P0-Heq" firstAttribute="top" secondItem="JU6-Cq-eXv" secondAttribute="bottom" constant="5" id="62o-GE-B2z"/>
                         <constraint firstItem="AZw-W2-fco" firstAttribute="leading" secondItem="z4S-Jg-ggX" secondAttribute="trailing" constant="16" id="8ZY-QW-6dt"/>
+                        <constraint firstItem="SI7-CF-Xv4" firstAttribute="top" secondItem="nGc-H6-6tp" secondAttribute="top" constant="10" id="90V-Yx-bYz"/>
                         <constraint firstItem="qGY-Ne-nyS" firstAttribute="leading" secondItem="nGc-H6-6tp" secondAttribute="leading" constant="16" id="AHb-Nr-hHM"/>
                         <constraint firstItem="7YI-GQ-ybX" firstAttribute="top" secondItem="Vx3-1R-Naq" secondAttribute="bottom" constant="16" id="Cne-jY-1H6"/>
                         <constraint firstItem="KLS-7w-dXx" firstAttribute="leading" secondItem="qGY-Ne-nyS" secondAttribute="leading" constant="9" id="FMo-2V-ZIH"/>
@@ -104,6 +119,7 @@
                         <constraint firstAttribute="bottom" secondItem="qGY-Ne-nyS" secondAttribute="bottom" constant="16" id="i3l-HF-ceJ"/>
                         <constraint firstItem="KLS-7w-dXx" firstAttribute="bottom" secondItem="qGY-Ne-nyS" secondAttribute="bottom" constant="-9" id="mQd-4b-605"/>
                         <constraint firstItem="nK8-9p-YAw" firstAttribute="leading" secondItem="nGc-H6-6tp" secondAttribute="leading" constant="16" id="nay-Mk-Cg4"/>
+                        <constraint firstAttribute="trailing" secondItem="SI7-CF-Xv4" secondAttribute="trailing" constant="10" id="qjV-WR-XFN"/>
                         <constraint firstItem="7YI-GQ-ybX" firstAttribute="leading" secondItem="nGc-H6-6tp" secondAttribute="leading" constant="16" id="soc-bl-3vF"/>
                         <constraint firstItem="KLS-7w-dXx" firstAttribute="top" secondItem="qGY-Ne-nyS" secondAttribute="top" constant="9" id="uli-wN-jUn"/>
                     </constraints>
@@ -136,6 +152,7 @@
         </view>
     </objects>
     <resources>
+        <image name="favoriteIcon" width="26" height="24"/>
         <image name="rectangleDelivery" width="337" height="71"/>
         <image name="vanDelivery" width="53" height="38"/>
         <systemColor name="systemBackgroundColor">

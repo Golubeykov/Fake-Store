@@ -174,7 +174,7 @@ extension ProductsViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailedProductViewController = DetailedProductViewController(model: productsModel.productsInCategory[indexPath.row])
+        let detailedProductViewController = DetailedProductViewController(model: productsModel.productsInCategory[indexPath.row], isFavorite: productsModel.productsInCategory[indexPath.row].isFavorite)
         navigationController?.pushViewController(detailedProductViewController, animated: true)
     }
 

@@ -9,6 +9,13 @@ import UIKit
 
 final class DetailedProductViewController: UIViewController {
 
+    // MARK: - Constants
+
+    private enum Constants {
+        static let favoriteTapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.darkBlue)
+        static let favoriteUntapped = UIImage(named: "favoriteIcon")?.withTintColor(ColorsStorage.backgroundGray)
+    }
+
     // MARK: - IBOutlets
 
     @IBOutlet weak var backgroundView: UIView!
@@ -18,6 +25,7 @@ final class DetailedProductViewController: UIViewController {
     @IBOutlet weak var goodsInCartLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var goToCartButtonLabel: UIButton!
+    @IBOutlet weak var favoriteProductButton: UIButton!
 
     // MARK: - Properties
 
@@ -30,11 +38,22 @@ final class DetailedProductViewController: UIViewController {
              productImageView.loadImage(from: url)
         }
     }
+    var buttonImage: UIImage? {
+        return isFavorite ? Constants.favoriteTapped : Constants.favoriteUntapped
+    }
+    var isFavorite: Bool {
+        didSet {
+            favoriteProductButton.setImage(buttonImage, for: .normal)
+        }
+    }
+    let favoritesStorage = FavoritesStorage.shared
+    var didFavoritesTap: (() -> Void)?
 
     // MARK: - Init
 
-    init(model: ProductModel) {
+    init(model: ProductModel, isFavorite: Bool) {
         self.model = model
+        self.isFavorite = isFavorite
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -67,6 +86,15 @@ final class DetailedProductViewController: UIViewController {
         CartService.shared.editProductsInCart(product: &model, newQuantity: model.count)
         tabBarController?.selectedIndex = 2
     }
+    @IBAction func favoriteProductButtonAction(_ sender: Any) {
+        didFavoritesTap?()
+        if favoritesStorage.isItemFavorite(item: self.productNameLabel.text ?? "") {
+            favoritesStorage.removeFavorite(favoriteItem: self.productNameLabel.text ?? "")
+        } else {
+            favoritesStorage.addFavorite(favoriteItem: self.productNameLabel.text ?? "")
+        }
+        isFavorite.toggle()
+    }
 
 }
 
@@ -80,6 +108,7 @@ private extension DetailedProductViewController {
         configureProductNameLabel()
         configureProductPriceLabel()
         configureLoginButton()
+        configureFavoriteButton()
     }
 
     func configureNavigationView() {
@@ -89,6 +118,10 @@ private extension DetailedProductViewController {
     func configureBackgroundStyle() {
         backgroundView.backgroundColor = ColorsStorage.white
         setGradientBackground()
+    }
+
+    func configureFavoriteButton() {
+        favoriteProductButton.setImage(buttonImage, for: .normal)
     }
 
     func setGradientBackground() {

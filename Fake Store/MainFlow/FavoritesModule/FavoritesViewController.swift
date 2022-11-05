@@ -187,7 +187,7 @@ extension FavoritesViewController: UICollectionViewDataSource, UICollectionViewD
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailedProductViewController = DetailedProductViewController(model: productsModel.favoriteItems[indexPath.row])
+        let detailedProductViewController = DetailedProductViewController(model: productsModel.favoriteItems[indexPath.row], isFavorite: productsModel.favoriteItems[indexPath.row].isFavorite)
         navigationController?.pushViewController(detailedProductViewController, animated: true)
     }
 
